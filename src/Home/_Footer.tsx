@@ -1,6 +1,6 @@
 function Footer() {
 
-    const css_button = "rounded bg-slate-300 px-5 text-black";
+    const css_button = "rounded bg-slate-300 px-5 text-black hover:bg-slate-200  transition";
 
     return (
         <>

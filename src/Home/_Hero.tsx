@@ -7,7 +7,7 @@ function Hero() {
             content-center
         "
         >
-            <button className="m-5 px-5 py-1 bg-slate-300 rounded text-black fixed top-0 right-0">Redesign</button>
+            <button className="m-5 px-5 py-1 bg-slate-300 rounded text-black fixed top-0 right-0 hover:bg-slate-200  transition">Redesign</button>
             <div className="m-auto">
                 <h1 className="font-bold text-8xl">freeLMS</h1>
                 <p>powerful, customizable & efficient LMS, for free.</p>
