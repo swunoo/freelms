@@ -3,6 +3,7 @@ import Content from "./_Content"
 import {style, styleTypes, styleKeys} from "./style"
 import open_black from "../assets/images/icons/open_black.png";
 import open_white from "../assets/images/icons/open_white.png";
+import { useNavigate } from "react-router-dom";
 
 
 export default Home
@@ -62,9 +63,11 @@ function Hero() {
 function Footer() {
 
     const {theme} = useContext(ThemeContext);
+    const navigate = useNavigate();
 
     const css_button = style[theme]['demo_btn'] + " flex content-center items-center gap-1 md:gap-3 py-2 md:px-5 px-3 transition";
     const open_btn_src = theme === 'simple_dark' ? open_white : open_black;
+
 
     return (
         <>
@@ -77,15 +80,15 @@ function Footer() {
                 <br />
                 A real-world usable freeLMS will be released soon.</p>
                 <div className="flex gap-3">
-                    <button className={css_button}>
+                    <button className={css_button} onClick={()=>navigate("/admin")}>
                         <span>Admin</span>
                         <img src={open_btn_src} alt="Icon"/>
                     </button>
-                    <button className={css_button}>
+                    <button className={css_button} onClick={()=>navigate("/teacher")}>
                         <span>Teacher</span>
                         <img src={open_btn_src} alt="Icon"/>
                     </button>
-                    <button className={css_button}>
+                    <button className={css_button} onClick={()=>navigate("/student")}>
                         <span>Student</span>
                         <img src={open_btn_src} alt="Icon"/>
                     </button>
