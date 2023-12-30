@@ -24,12 +24,16 @@ function Content() {
 
     return (
         <div className="
-            grid
+            md:grid
             grid-cols-2
             max-w-5xl
             m-auto
+            px-10
             items-center
         ">
+            <img
+                className={style[theme]['content_img'] + " md:order-last shadow-md"} 
+                src={screenImages[selected]} alt="Admin" />
             <ul>
                 <Details
                     title="admin"
@@ -72,9 +76,6 @@ function Content() {
                     changeSite={() => setSelected('staff')}
                 />
             </ul>
-            <img
-                className={style[theme]['content_img'] + " shadow-md"} 
-                src={screenImages[selected]} alt="Admin" />
         </div>
     )
 }
