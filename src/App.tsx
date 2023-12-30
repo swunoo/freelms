@@ -3,6 +3,8 @@ import Home from "./Home/Home"
 
 import Error from './Error';
 import Dashboard from './Admin/Dashboard';
+import Design from './Admin/Design';
+import Members from './Admin/Members';
 
 function App() {
 
@@ -11,8 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/admin/dashboard" element={<Dashboard />} />
-        {/* <Route path="/admin/design" element={<Admin />} /> */}
-        {/* <Route path="/admin/members" element={<Admin />} /> */}
+        <Route path="/admin/design" element={<Design />} />
+        <Route path="/admin/members" element={<Members />} />
 
         <Route path="*" element={<Error />}/>
       </Routes>
