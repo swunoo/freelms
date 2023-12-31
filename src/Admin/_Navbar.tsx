@@ -2,7 +2,10 @@
 
 export default Navbar;
 
-function Navbar(){
+type links = 'dashboard' | 'design' | 'members';
+
+/* Navbar for Admin */
+function Navbar({active}: {active: links}){
 
     return (
         <div
@@ -10,9 +13,9 @@ function Navbar(){
         >
             <p>freeLMS</p>
             <div className="flex gap-7">
-                <a href="/admin/dashboard">Dashboard</a>
-                <a href="/admin/design">Design</a>
-                <a href="/admin/members">Members</a>
+                <a href="/admin/dashboard" className={active==='dashboard'?'font-bold':''}>Dashboard</a>
+                <a href="/admin/design" className={active==='design'?'font-bold':''}>Design</a>
+                <a href="/admin/members" className={active==='members'?'font-bold':''}>Members</a>
             </div>
         </div>
     )

@@ -21,7 +21,6 @@ function Content() {
 
     const [selected, setSelected] = useState<site>('admin');
 
-
     return (
         <div className="
             md:grid

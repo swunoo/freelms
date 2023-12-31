@@ -5,6 +5,7 @@ import { Chart } from "tw-elements";
 
 export default Dashboard;
 
+/* Admin Dashboard */
 function Dashboard() {
 
     return (
@@ -15,7 +16,7 @@ function Dashboard() {
             min-h-screen
         ">
             <div className="col-start-1 col-end-4">
-                <Navbar />
+                <Navbar active='dashboard'/>
                 <Content />
             </div>
             <ChatPanel />
@@ -23,6 +24,7 @@ function Dashboard() {
     )
 }
 
+/* Contents inside Admin Dashboard */
 function Content() {
 
     const dataBar = {
@@ -73,6 +75,7 @@ function Content() {
     )
 }
 
+/* Each stat for the chart */
 function Stat({cur, delta, title}: {cur: string, delta: number, title: string}){
     return (
         <div className="flex items-center py-2">

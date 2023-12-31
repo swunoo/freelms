@@ -32,11 +32,11 @@ export default function Modal({child, title, showModal, setShowModal}: {child: R
                   </button>
                 </div>
                 {/*body*/}
-                <div className="relative p-6 flex-auto">
+                <div className="relative flex justify-center p-3">
                   {child}
                 </div>
                 {/*footer*/}
-                <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b gap-5">
                   <button
                     className={css_button}
                     type="button"
@@ -49,7 +49,7 @@ export default function Modal({child, title, showModal, setShowModal}: {child: R
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
-                    Save Changes
+                    Edit
                   </button>
                 </div>
               </div>
