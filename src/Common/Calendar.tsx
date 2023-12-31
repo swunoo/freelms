@@ -16,11 +16,12 @@ export default function Calendar () {
 
     const [curDate, setCurDate] = useState(new Date());
     const [calInfo, setCalInfo] = useState<CalInfo>();
-    const tBodyRef = useRef(null);
+    
 
     useEffect(() => {
         const totalDays = new Date(curDate.getFullYear(), curDate.getMonth() + 1, 0).getDate();
         const curDay = curDate.getDate();
+        
         setCalInfo({
             totalDays: totalDays,
             firstDay: new Date(curDate.getFullYear(), curDate.getMonth(), 1).getDay(),
@@ -41,14 +42,17 @@ export default function Calendar () {
                             </h1>
                             <div className="flex items-center text-gray-800 dark:text-gray-100">
                                 <svg onClick={
-                                    ()=>setCurDate(new Date(curDate.getFullYear(), curDate.getMonth() - 1, calInfo?.curDay))
+                                    ()=>{       
+                                        setCurDate(()=>new Date(curDate.getFullYear(), curDate.getMonth() - 1))
+                                    }
                                 }
                                 xmlns="http://www.w3.org/2000/svg" className="cursor-pointer icon icon-tabler icon-tabler-chevron-left" width={24} height={24} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                     <polyline points="15 6 9 12 15 18" />
                                 </svg>
                                 <svg onClick={
-                                    ()=>setCurDate(new Date(curDate.getFullYear(), curDate.getMonth() + 1, calInfo?.curDay))
+                                    ()=>{
+                                        setCurDate(()=>new Date(curDate.getFullYear(), curDate.getMonth() + 1))}
                                 }
                                 xmlns="http://www.w3.org/2000/svg" className="cursor-pointer icon icon-tabler ml-3 icon-tabler-chevron-right" width={24} height={24} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -78,7 +82,7 @@ export default function Calendar () {
                                         {
                                             Array.from({ length: calInfo?.totalDays as number }).map((_, index) => (
                                                 <td className="pt-6">
-                                                <div className={(isCurrent(index)?"bg-slate-900 rounded-lg":"")+" px-2 py-1 flex w-full justify-center"}>
+                                                <div className="px-2 py-1 flex w-full justify-center">
                                                     <p className="text-xs text-gray-500 dark:text-gray-100 font-medium">{index+1}</p>
                                                 </div>
                                             </td>
