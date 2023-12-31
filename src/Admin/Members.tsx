@@ -2,12 +2,12 @@ import ChatPanel from "../Common/ChatPanel";
 import SearchBar from "../Common/SearchBar";
 import Navbar from "./_Navbar";
 
-import admin_darkgray from "../assets/images/icons/admin_darkgray.png";
+import profile_pic from "../assets/images/profile.png";
 import teacher_darkgray from "../assets/images/icons/teacher_darkgray.png";
 import student_darkgray from "../assets/images/icons/student_darkgray.png";
 import staff_darkgray from "../assets/images/icons/staff_darkgray.png";
 import Card from "../Common/Card";
-import { createElement, useState } from "react";
+import { useState } from "react";
 import Modal from "../Common/Modal";
 
 export default function Members() {
@@ -55,33 +55,31 @@ function Content() {
 
 function Table() {
 
+    const tmpData = {
+        id: '123', alias: 'jean doe', gender: 'male', class: 'biology', age: 15 };
+
     const [showModal, setShowModal] = useState(false);
     const [modalTitle, setModalTitle] = useState('Details');
     const [modalChild, setModalChild] = useState(<></>);
 
-
     const css_button = "flex content-center items-center gap-1 md:gap-3 py-2 md:px-5 px-3 transition rounded-xl hover:bg-neutral-200 bg-neutral-100"
 
     const showDetails = (id: string) => {
-        const tmpData = {
-            id: '123', alias: 'jean doe', gender: 'male', class: 'biology', age: 15 };
-            console.log("clicked");
+
         setModalChild(
-            <Card
-                isHor={true}
-                link='#'
-                img={student_darkgray}
-                title=''
-                content={
-                    <ul>
-                        <li>Alias: {tmpData.alias}</li>
-                        <li>Gender: {tmpData.gender}</li>
-                        <li>Class: {tmpData.class}</li>
-                        <li>Age: {tmpData.age}</li>
-                    </ul>
-                }
-                btns={[]}
-            />
+            <div className="flex w-full justify-center gap-5 p-5 md:px-16">
+            <img className="self-center flex-initial" src={profile_pic} alt="Profile Pic" />
+                <ul className="grid grid-cols-2 gap-3 text-base">
+                    <li className="font-light uppercase">Alias: </li>
+                    <li>{tmpData.alias}</li>
+                    <li className="font-light uppercase">Gender:</li>
+                    <li>{tmpData.gender}</li>
+                    <li className="font-light uppercase">Class:</li>
+                    <li>{tmpData.class}</li>
+                    <li className="font-light uppercase">Age:</li>
+                    <li>{tmpData.age}</li>
+                </ul>
+            </div>
         )
         setModalTitle(tmpData.id + ' - ' + tmpData.alias);
         setShowModal(true);

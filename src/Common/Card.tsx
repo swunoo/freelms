@@ -7,8 +7,8 @@ type cardProps = {isHor: boolean, link: string, img: string|null, title:string, 
 export default function Card(props: cardProps, optionals?:any) {
     return (
         <div className={
-            (!props.isHor?"flex-col w-fit max-w-72 ":"")
-            + "flex rounded-lg bg-slate-100 text-left overflow-hidden cursor-pointer"}
+            (!props.isHor?"flex-col max-w-72 ":"")
+            + "w-full flex rounded-lg bg-slate-100 text-left overflow-hidden cursor-pointer"}
             onClick={() => {
                 if(props.link){
                     location.href=props.link;
