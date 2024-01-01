@@ -20,7 +20,7 @@ export const mockClassList = [
         code: "CS 2401-01",
         name: "Software Engineering 1",
         img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
-        color: "#aa0000",
+        color: "#153131",
         days: ["mon", "tue", "wed"],
         startTime: 15, duration: 1
     },
@@ -29,7 +29,7 @@ export const mockClassList = [
         code: "CS 2401-01",
         name: "Software Engineering 1",
         img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
-        color: "#00ff00",
+        color: "#6A7FDB",
         days: ["mon", "tue", "wed"],
         startTime: 15, duration: 1
     },
@@ -38,7 +38,25 @@ export const mockClassList = [
         code: "CS 2401-01",
         name: "Software Engineering 1",
         img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
-        color: "#000000",
+        color: "#45CB85",
+        days: ["mon", "tue", "wed"],
+        startTime: 15, duration: 1
+    },
+    {
+        id: '123',
+        code: "CS 2401-01",
+        name: "Software Engineering 1",
+        img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
+        color: "#6A7FDB",
+        days: ["mon", "tue", "wed"],
+        startTime: 15, duration: 1
+    },
+    {
+        id: '123',
+        code: "CS 2401-01",
+        name: "Software Engineering 1",
+        img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
+        color: "#45CB85",
         days: ["mon", "tue", "wed"],
         startTime: 15, duration: 1
     },
@@ -49,21 +67,21 @@ export const mockLiveSessionList = [
         id: '123',
         code: "CS 2401-01",
         name: "Software Engineering 1",
-        color: "#1122FF",
+        color: "#6A7FDB",
         startTime: 15, duration: 1
     },
     {
         id: '123',
         code: "CS 2401-01",
         name: "Software Engineering 1",
-        color: "#FF0000",
+        color: "#57E2E5",
         startTime: 15, duration: 1
     },
     {
         id: '123',
         code: "CS 2401-01",
         name: "Software Engineering 1",
-        color: "#00FFEE",
+        color: "#45CB85",
         startTime: 15, duration: 1
     },
 ]

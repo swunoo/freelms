@@ -1,6 +1,5 @@
 import chat_icon from "../assets/images/icons/chat_gray.png";
 
-
 export default ChatPanel;
 
 function ChatPanel () {
