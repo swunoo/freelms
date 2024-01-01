@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Calendar from "../Common/Calendar";
 import Card from "../Common/Card";
 import ChatPanel from "../Common/ChatPanel";
@@ -5,45 +6,51 @@ import SearchBar from "../Common/SearchBar";
 import { hrsToTimeStr } from "../Common/Utils";
 import { mockClassList, mockLiveSessionList } from "../Mockers";
 import Navbar from "./_Navbar";
+import Sidebar from "../Common/Sidebar";
+import sideopen from "../assets/images/icons/sideopen_lightgray.png"
 
 export default function Desk(){
 
     const classData = mockClassList;
     const liveSessionData = mockLiveSessionList;
 
+
+
     return (
         <div
             className="
-            md:grid
-            grid-cols-4
+            flex
             min-h-screen
             bg-slate-200
+            relative
         ">
-            <div className="col-start-1 col-end-4">
+            <div className="m-auto">
                 <Navbar />
                 <Content classes={classData} />
             </div>
-            <div className="shadow-lg">
-                <Calendar />
-                <div className="p-3">
-                    {/* TODO: try this:
-                    {liveSessionData.map(LiveSession)} */}
-                    {liveSessionData.map(d => {                        
-                        return (
-                            <LiveSession data={d}/>
-                        )
-                    })}
-                </div>
-            </div>
+            <Sidebar
+                child={
+                    <>
+                    <Calendar />
+                    <div className="p-3">
+                        {liveSessionData.map(d => {                        
+                            return (
+                                <LiveSession data={d}/>
+                            )
+                        })}
+                    </div>
+                    </>
+                }
+            />
         </div>
     )
 }
 type classData = any; // TODO;
 function Content({classes}: {classes: classData[]}){
     return (
-        <div className="p-3 max-w-4xl m-auto mb-10">
+        <div className="p-3 md:px-20 m-auto mb-10">
             <SearchBar />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-around">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center">
                 {
                     classes.map(c => {
                         const days = c.days[0] 
@@ -58,7 +65,7 @@ function Content({classes}: {classes: classData[]}){
                             img={c.img}
                             content={
                                 <>
-                                    <h3 className="text-lg font-bold">
+                                    <h3 className="text-lg font-bold w-full">
                                         {c.code}<br/>{c.name}
                                     </h3>
                                     <hr className="my-3 border-2" style={{borderColor: c.color}} />

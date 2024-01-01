@@ -1,11 +1,8 @@
 import { ReactNode, useState } from "react";
-import Card from "./Card"
+import { FullBtn } from "./Buttons";
 
 
 export default function Modal({child, title, showModal, setShowModal}: {child: ReactNode, title: string, showModal: boolean, setShowModal: (b: boolean)=>void}) {
-
-    const css_button = "flex content-center items-center gap-1 md:gap-3 py-2 md:px-5 px-3 transition rounded-xl hover:bg-neutral-200 bg-neutral-100"
-
 
   return (
     <>
@@ -18,39 +15,23 @@ export default function Modal({child, title, showModal, setShowModal}: {child: R
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-                  <h3 className="text-3xl font-light">
+                  <h3 className="text-3xl font-light p-3 md:px-10 md:py-5">
                     {title}
                   </h3>
-                  <button
-                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                    onClick={() => setShowModal(false)}
-                  >
-                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                      ×
-                    </span>
-                  </button>
-                </div>
                 {/*body*/}
                 <div className="relative flex justify-center p-3">
                   {child}
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b gap-5">
-                  <button
-                    className={css_button}
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Close
-                  </button>
-                  <button
-                    className={css_button}
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Edit
-                  </button>
+                  <FullBtn
+                    label='Close'
+                    onclick={()=>setShowModal(false)}
+                  />
+                  <FullBtn
+                    label='Edit'
+                    onclick={()=>setShowModal(false)}
+                  />
                 </div>
               </div>
             </div>

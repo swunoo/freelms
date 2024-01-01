@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
+/* Data to build the calendar */
 interface CalInfo {
     totalDays: number;
     firstDay:number;
@@ -9,44 +10,36 @@ interface CalInfo {
 
 export default function Calendar () {
 
-    const isCurrent = (i: number) => {
-        return (
-            curDate.getMonth() === (new Date()).getMonth()
-            && i+1 === curDate.getDate())}
-
     const [curDate, setCurDate] = useState(new Date());
     const [calInfo, setCalInfo] = useState<CalInfo>();
-    
 
     useEffect(() => {
-        const totalDays = new Date(curDate.getFullYear(), curDate.getMonth() + 1, 0).getDate();
-        const curDay = curDate.getDate();
-        
+
         setCalInfo({
-            totalDays: totalDays,
+            totalDays: new Date(curDate.getFullYear(), curDate.getMonth() + 1, 0).getDate(),
             firstDay: new Date(curDate.getFullYear(), curDate.getMonth(), 1).getDay(),
-            curDay: curDay,
+            curDay: curDate.getDate(),
             curMonth: curDate.toLocaleDateString('en-US', { month: 'long' })
         }) 
 
     }, [curDate])
 
   return (
-    <div className="">
+    <div>
             <div className="flex items-center justify-center">
                 <div className="w-full">
-                    <div className="py-6 p-3 dark:bg-gray-800 bg-white  w-full">
+                    <div className="py-6 p-3 bg-white  w-full">
                         <div className="px-1 flex items-center justify-between">
-                            <h1 className="text-base font-light dark:text-gray-100 text-gray-800">
+                            <h1 className="text-base font-light text-gray-800">
                             {curDate.getFullYear() +' '+ calInfo?.curMonth.substring(0,3)}
                             </h1>
-                            <div className="flex items-center text-gray-800 dark:text-gray-100">
+                            <div className="flex items-center text-gray-800">
                                 <svg onClick={
                                     ()=>{       
                                         setCurDate(()=>new Date(curDate.getFullYear(), curDate.getMonth() - 1))
                                     }
                                 }
-                                xmlns="http://www.w3.org/2000/svg" className="cursor-pointer icon icon-tabler icon-tabler-chevron-left" width={24} height={24} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                xmlns="http://www.w3.org/2000/svg" className="cursor-pointer icon icon-tabler icon-tabler-chevron-left hover:bg-gray-100 rounded" width={24} height={24} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                     <polyline points="15 6 9 12 15 18" />
                                 </svg>
@@ -54,7 +47,7 @@ export default function Calendar () {
                                     ()=>{
                                         setCurDate(()=>new Date(curDate.getFullYear(), curDate.getMonth() + 1))}
                                 }
-                                xmlns="http://www.w3.org/2000/svg" className="cursor-pointer icon icon-tabler ml-3 icon-tabler-chevron-right" width={24} height={24} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                xmlns="http://www.w3.org/2000/svg" className="cursor-pointer icon icon-tabler ml-3 icon-tabler-chevron-right hover:bg-gray-100 rounded" width={24} height={24} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                     <polyline points="9 6 15 12 9 18" />
                                 </svg>
@@ -64,9 +57,11 @@ export default function Calendar () {
                             <table className="w-full">
                                 <tbody className='grid grid-cols-7'>
                                     {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map(
-                                        day => <th>
+                                        (day, i) => <th>
                                                     <div className="w-full flex justify-center">
-                                                        <p className="text-xs font-semibold text-center text-gray-100">{day}</p>
+                                                        <p className={
+                                                            ((i===0||i===6)? "text-rose-600 " : "")
+                                                            +"text-xs font-medium text-center text-gray-800"}>{day}</p>
                                                     </div>
                                                 </th>
                                     )}
@@ -82,8 +77,15 @@ export default function Calendar () {
                                         {
                                             Array.from({ length: calInfo?.totalDays as number }).map((_, index) => (
                                                 <td className="pt-6">
-                                                <div className="px-2 py-1 flex w-full justify-center">
-                                                    <p className="text-xs text-gray-500 dark:text-gray-100 font-medium">{index+1}</p>
+                                                <div className="px-2 py-1 flex flex-col w-full justify-center">
+                                                    <p className="text-xs text-gray-600 font-medium">{index+1}</p>
+                                                    <div className="flex flex-wrap gap-0.5">
+                                                        {Math.random() > 0.5 && <div className="w-1.5 h-1.5" style={{backgroundColor: "#E08DAC"}}></div>}
+                                                        {Math.random() > 0.85 && <div className="rounded-xl w-1.5 h-1.5" style={{backgroundColor: "#153131"}}></div>}
+                                                        {Math.random() > 0.7 && <div className="w-1.5 h-1.5" style={{backgroundColor: "#45CB85"}}></div>}
+                                                        {Math.random() > 0.9 && <div className="rounded-xl w-1.5 h-1.5" style={{backgroundColor: "#6A7FDB"}}></div>}
+                                                        {Math.random() > 0.95 && <div className="rounded-xl w-1.5 h-1.5" style={{backgroundColor: "#45CB85"}}></div>}
+                                                    </div>
                                                 </div>
                                             </td>
                                             ))
@@ -95,15 +97,15 @@ export default function Calendar () {
                     <div className="py-8 px-2 bg-gray-50 rounded-b">
                         <div className="px-2 flex gap-3">
                             <div className="flex gap-1 items-center">
-                                <span className="w-2 h-2 bg-yellow-300"></span>
+                                <span className="w-2 h-2" style={{backgroundColor: "#E08DAC"}}></span>
                                 <p className="text-xs font-light text-neutral-600">Biology Class</p>
                             </div>
                             <div className="flex gap-1 items-center">
-                                <span className="w-2 h-2 bg-blue-300"></span>
+                                <span className="w-2 h-2" style={{backgroundColor: "#45CB85"}}></span>
                                 <p className="text-xs font-light text-neutral-600">Chemistry Class</p>
                             </div>
                             <div className="flex gap-1 items-center">
-                                <span className="w-2 h-2 bg-green-300 rounded-xl"></span>
+                                <span className="w-2 h-2 rounded-xl" style={{backgroundColor: "#153131"}}></span>
                                 <p className="text-xs font-light text-neutral-600">Class B Exam</p>
                             </div>
                         </div>

@@ -1,4 +1,5 @@
 import { MouseEventHandler, ReactNode } from "react"
+import { FullBtn } from "./Buttons";
 
 type btnData = {onclick: MouseEventHandler<HTMLButtonElement>|undefined, text: string, color: string}
 type cardProps = {isHor: boolean, link: string, img: string|null, content:ReactNode, btns: btnData[]}
@@ -24,8 +25,7 @@ export default function Card(props: cardProps) {
             {
             props.btns.map(btn => {
                 return(
-                    <button onClick={btn.onclick}
-                    className={btn.color + " mt-3 inline-block rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-lg transition duration-150 ease-in-out hover:brightness-90"}> {btn.text} </button>
+                    <FullBtn label={btn.text} color={btn.color} icon={undefined} />
                 )
             })}
 

@@ -60,15 +60,15 @@ function Table() {
 
         // Modal with each item of user displayed inside.
         setModalChild(
-            <div className="flex w-full justify-center gap-5 p-5 md:px-16">
+            <div className="flex w-full justify-center gap-10 p-5 md:px-16">
                 <img className="self-center flex-initial" src={mockUser.profilePic} alt="Profile Pic" />
-                <ul className="grid grid-cols-2 gap-3 text-base">
+                <ul className="grid grid-cols-3 gap-3 text-base justify-center">
                     {(Object.keys(user) as Array<keyof typeof user>)
                         .map((key: keyof typeof user) => {
                             return (
                                 <>
-                                    <li className="font-light uppercase">{key}:</li>
-                                    <li>{user[key]}</li>
+                                    <li className="col-start-1 col-end-2 font-light uppercase">{key}:</li>
+                                    <li className="col-start-2 col-end-4" key={key}>{user[key]}</li>
                                 </>
                             )
                     })}
