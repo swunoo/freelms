@@ -68,7 +68,6 @@ function Footer() {
     const css_button = style[theme]['demo_btn'] + " flex content-center items-center gap-1 md:gap-3 py-2 md:px-5 px-3 transition";
     const open_btn_src = theme === 'simple_dark' ? open_white : open_black;
 
-
     return (
         <>
         <div className={style[theme]['footer_wrapper'] + " md:mt-64 md:py-20 md:px-24 mt-32 py-14 px-5"}>
