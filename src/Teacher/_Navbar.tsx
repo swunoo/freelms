@@ -4,7 +4,7 @@ function Navbar({active}: {active: string}){
 
     return (
         <div
-            className="flex justify-between py-3 px-5 md:px-16 text-base"
+            className="flex justify-between py-2 px-5 md:px-16 text-base sticky top-0 w-full shadow-sm bg-slate-100"
         >
             <p>freeLMS</p>
             <div className="flex gap-7">

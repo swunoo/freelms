@@ -12,7 +12,7 @@ export default function Sidebar({child}: sideBarType){
 
     return (
         <>
-            <div className={(showBar?"":"hidden ")+"shadow-lg bg-gray-300 md:relative fixed right-0 min-h-screen md:w-fit w-full"}
+            <div className={(showBar?"":"hidden ")+"shadow-lg bg-gray-300 min-h-screen md:w-fit w-full"}
             >
                 {child}
             </div>

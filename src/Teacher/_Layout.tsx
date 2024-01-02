@@ -16,13 +16,13 @@ export default function Layout ({ children, active }: {children: ReactNode, acti
         <div
             className="
             flex
-            min-h-screen
             bg-slate-200
-            relative
         ">
-            <div className="m-auto">
+            <div className="w-full relative">
                 <Navbar active={active}/>
-                { children }
+                <div className="min-h-screen">
+                    { children }
+                </div>
             </div>
             <Sidebar
                 child={
