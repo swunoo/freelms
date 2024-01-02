@@ -4,7 +4,8 @@ import Home from "./Home/Home"
 import Error from './Error';
 import Dashboard from './Admin/Dashboard';
 import Design from './Admin/Design';
-import Members from './Admin/Members';
+import AdminMembers from './Admin/Members';
+import TeacherMembers from './Teacher/Members';
 import Desk from './Teacher/Desk';
 
 function App() {
@@ -16,10 +17,11 @@ function App() {
 
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/design" element={<Design />} />
-        <Route path="/admin/members" element={<Members />} />
+        <Route path="/admin/members" element={<AdminMembers />} />
         <Route path="/admin" element={<Dashboard />} />
 
         <Route path="/teacher/desk" element={<Desk />} />
+        <Route path="/teacher/members" element={<TeacherMembers />} />
         <Route path="/teacher" element={<Desk />} />
 
         <Route path="*" element={<Error />}/>

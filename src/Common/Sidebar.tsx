@@ -1,5 +1,6 @@
 import { ReactNode, useState } from "react";
 import sideopen from "../assets/images/icons/sideopen_lightgray.png"
+import { hrsToTimeStr } from "./Utils";
 
 
 type sideBarType = {child: ReactNode}
@@ -21,5 +22,24 @@ export default function Sidebar({child}: sideBarType){
                 <img className={(showBar?"rotate-180 ":"")+"w-6"} src={sideopen} alt="Open" />
             </div>
         </>
+    )
+}
+
+type liveSessionType = any; //TODO
+export function LiveSession({data}: {data:liveSessionType}){
+    const css_live_session = "flex content-center items-center gap-1 md:gap-3 py-2 md:px-5 px-3 transition rounded-xl hover:bg-neutral-200 bg-neutral-100 w-full my-1"
+
+    const startTime = hrsToTimeStr(data.startTime);
+    const endTime = hrsToTimeStr(data.startTime+data.duration);
+    const duration = hrsToTimeStr(data.duration, true);
+
+    return (
+        <button className={css_live_session}>
+            <span className="p-1 rounded-md text-neutral-900" style={{backgroundColor: data.color}}>
+                {data.code}
+            </span>
+            <span>{startTime} - {endTime}</span>
+            <span className="ml-auto font-light">{duration}</span>
+        </button>
     )
 }

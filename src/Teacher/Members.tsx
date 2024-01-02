@@ -10,22 +10,14 @@ import Modal from "../Common/Modal";
 import { IconBtn } from "../Common/Buttons";
 import { mockUser, mockUserList } from "../Mockers";
 import { BaseTable, BaseTableData, BaseTableHeader, BaseTableNav } from "../Common/Table";
+import Layout from "./_Layout";
 
 /* Members screen of Admin */
 export default function Members() {
     return (
-        <div
-            className="
-            md:grid
-            grid-cols-4
-            min-h-screen
-        ">
-            <div className="col-start-1 col-end-4">
-                <Navbar active="members"/>
-                <Content />
-            </div>
-            <ChatPanel />
-        </div>
+        <Layout active="members">
+            <Content/>
+        </Layout>
     )
 }
 
