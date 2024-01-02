@@ -1,43 +1,30 @@
 import Calendar from "../Common/Calendar";
 import Card from "../Common/Card";
 import ChatPanel from "../Common/ChatPanel";
-import SearchBar from "../Common/SearchBar";
+import SearchBar from "../Common/Inputs";
 import { hrsToTimeStr } from "../Common/Utils";
 import { mockClassList, mockLiveSessionList } from "../Mockers";
 import Navbar from "./_Navbar";
 import Sidebar, { LiveSession } from "../Common/Sidebar";
-import { ReactNode } from "react";
+import { MouseEvent, ReactNode, useEffect, useState } from "react";
 
-export default function Layout ({ children, active }: {children: ReactNode, active: string}) {
+export default function Layout({ children, active }: { children: ReactNode, active: string }) {
 
-    const liveSessionData = mockLiveSessionList;
+    const [sideBarContent, setSideBarContent] = useState<ReactNode | undefined>(undefined);
 
     return (
-        <div
-            className="
-            flex
-            min-h-screen
-            bg-slate-200
-            relative
-        ">
-            <div className="m-auto">
-                <Navbar active={active}/>
-                { children }
-            </div>
-            <Sidebar
-                child={
-                    <>
-                    <Calendar />
-                    <div className="p-3">
-                        {liveSessionData.map(d => {                        
-                            return (
-                                <LiveSession data={d}/>
-                            )
-                        })}
+        <div>
+            <div className="w-full relative">
+                <Navbar active={active} setSideBarContent={setSideBarContent} />
+                <div className="min-h-screen flex bg-white">
+                    <div id="desk-content" className="">
+                        {children}
                     </div>
-                    </>
-                }
-            />
+
+                    <Sidebar sideBarContent={sideBarContent}/>
+                </div>
+
+            </div>
         </div>
     )
 }

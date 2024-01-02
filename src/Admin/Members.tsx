@@ -1,5 +1,5 @@
 import ChatPanel from "../Common/ChatPanel";
-import SearchBar from "../Common/SearchBar";
+import SearchBar from "../Common/Inputs";
 import Navbar from "./_Navbar";
 
 import teacher_darkgray from "../assets/images/icons/teacher_darkgray.png";
