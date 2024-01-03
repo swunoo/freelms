@@ -2,7 +2,7 @@ import { useState } from "react";
 import Calendar from "../Common/Calendar";
 import Card from "../Common/Card";
 import ChatPanel from "../Common/ChatPanel";
-import SearchBar from "../Common/SearchBar";
+import SearchBar from "../Common/Inputs";
 import { hrsToTimeStr } from "../Common/Utils";
 import { mockClassList, mockLiveSessionList } from "../Mockers";
 import Navbar from "./_Navbar";

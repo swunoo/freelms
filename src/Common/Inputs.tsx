@@ -41,3 +41,12 @@ export function SearchInput({name}: {name: string}){
         </div>
     )
 }
+
+export function Input({label, name, value}: {label: string, name: string, value?:string|undefined}){
+    return (
+        <label className="grid grid-cols-5 items-center  rounded text-neutral-800 bg-gray-100 border-neutral-300 border">
+            <p className="w-full text-center">{label}</p>
+            <input name={name} value={value??""} type="text" className="w-full py-2 pl-3 text-sm focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400 col-start-2 col-end-6" />
+        </label>
+    )
+}

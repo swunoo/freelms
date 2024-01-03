@@ -5,7 +5,7 @@ import { mockClassData, mockLiveSessionList } from "../Mockers";
 import Layout from "./_Layout";
 import Navbar from "./_Navbar"
 import { useState } from "react";
-import { SectionContentDisplay, SectionContentEdit } from "../Common/Class";
+import { ClassMenu, ClassMetaEdit, Section, SectionContentDisplay, SectionContentEdit } from "../Common/Class";
 
 export default function Class(){
     
@@ -18,23 +18,14 @@ export default function Class(){
     )
 }
 
-interface Section {
-    id: string;
-    title: string;
-    content: string;
-}
-
-interface ClassUnit {
-    id: string;
-    title: string;
-    sections: Section[]
-}
+export type classModeType = 'meta-edit'|'edit'|'view';
 
 function Content () {
 
     const classData = mockClassData;
 
     const [section, setSection] = useState<Section>(classData.units[0].sections[0]);
+    const [mode, setMode] = useState<classModeType>('view')
 
     return (
         <div className="
@@ -47,48 +38,24 @@ function Content () {
                 color={classData.color}
                 units={classData.units}
                 selectSection={setSection}
+                mode={mode}
+                setMode={setMode}
             />
             <main className="
                 col-start-2
                 col-end-5
                 px-8
             ">
-                <h3 className="text-bold text-3xl">{section.title}</h3>
-                <SectionContentEdit content={section.content}/>
+            {(()=>{
+                switch(mode){
+                    case 'view':
+                        return <SectionContentDisplay content={section.content} title={section.title} toEdit={()=>setMode('edit')} />
+                    case 'edit':
+                        return <SectionContentEdit content={section.content} title={section.title} toView={()=>setMode('view')} />
+                    case 'meta-edit':
+                        return <ClassMetaEdit classData={classData} />
+            }})()}
             </main>
         </div>
-    )
-}
-
-type classMenuType = {title: string, color: string, units: ClassUnit[], selectSection: (s: Section)=>void};
-
-function ClassMenu ({title, color, units, selectSection}: classMenuType) {
-    return (
-        <aside className="border-r border-gray-300 min-h-screen">
-            <div className="font-thin text-lg uppercase">
-                {title}
-            </div>
-            <hr className="border-b border-0.5 my-5 mr-5" style={{borderColor: color}}/>
-            <ul
-                className="text-base"
-            >
-                {units.map(unit => (
-                    <details>
-                    <summary
-                        className="mt-5 cursor-pointer text-lg font-light"
-                    >{unit.title}</summary>
-                    <ul className="ml-8">
-                        {unit.sections.map(section => (
-                            <li
-                            className="list-decimal my-3 cursor-pointer"
-                            onClick={() => selectSection(section)}
-                            >{section.title}</li>
-                        ))
-                        }
-                    </ul>
-                    </details>
-                ))}
-            </ul>
-        </aside>
     )
 }
