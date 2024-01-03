@@ -1,6 +1,6 @@
 const css_button = "flex content-center items-center gap-1 md:gap-3 py-2 md:px-5 px-3 transition rounded-xl hover:bg-neutral-200 bg-neutral-100"
 
-const css_icon = "w-6"
+const css_icon = "w-5 md:w-6"
 
 type btnProps = {icon?: string | undefined, label?: string|undefined, color?: string | undefined, onclick?: ()=>void | undefined}
 

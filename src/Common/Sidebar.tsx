@@ -10,7 +10,7 @@ export default function Sidebar({sideBarContent}: {sideBarContent: ReactNode}){
 
     return (
         <>
-            <div className={(showBar?"":"hidden ")+" h-fit md:w-fit w-full md:w-2/5 border-2 rounded-xl m-2 bg-white overflow-hidden"}
+            <div className={(showBar?"":"hidden ")+" h-screen w-screen m-0 md:h-fit md:block md:w-fit md:w-2/5 border-2 rounded-xl md:m-2 bg-white overflow-hidden  fixed"}
             >
                 {sideBarContent}
             </div>
