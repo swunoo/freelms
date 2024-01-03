@@ -1,21 +1,43 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { IconBtn } from "../Common/Buttons";
-import { mockChat, mockNoti } from "../Mockers";
+import { mockChat, mockLiveSessionList, mockNoti } from "../Mockers";
 import chatIcon from "../assets/images/icons/chat_blue.png"
 import notiIcon from "../assets/images/icons/noti_blue.png"
+import calendarIcon from "../assets/images/icons/calendar_blue.png"
+import Calendar from "../Common/Calendar";
+import { LiveSession } from "../Common/Sidebar";
 
 export default Navbar;
 
-function Navbar({active, box, setBox}: {active: string, box: ReactNode|undefined, setBox: (r: ReactNode)=>void}){
+function Navbar({active, setSideBarContent}: {active: string, setSideBarContent: (r: ReactNode)=>void}){
+
+    const openCalendar = () => {
+        const liveSessionData = mockLiveSessionList;
+
+        setSideBarContent(
+        <>
+            <Calendar />
+            <div className="p-3">
+                {liveSessionData.map(d => {
+                    return (
+                        <LiveSession data={d} />
+                    )
+                })}
+            </div>
+        </>);
+    }
 
     const openChats = () => {
         const chatData = mockChat;
-        setBox(<ChatBox data={chatData} />);
+        setSideBarContent(<ChatBox data={chatData} />);
     }
 
     const openNotis = () => {
-
+        const notiData = mockNoti;
+        setSideBarContent(<NotiBox data={notiData} />);
     }
+
+    useEffect(openCalendar,[])
 
     return (
         <div
@@ -27,22 +49,9 @@ function Navbar({active, box, setBox}: {active: string, box: ReactNode|undefined
                 <a href="/teacher/members" className={active==='members'?'font-bold':''}>Members</a>
 
                 <div className="ml-7 flex gap-7 h-fit">
+                    <IconBtn icon={calendarIcon} onclick={openCalendar}/>
                     <IconBtn icon={chatIcon} onclick={openChats}/>
                     <IconBtn icon={notiIcon} onclick={openNotis}/>
-
-                    {/* <div className="h-auto overflow-y-auto">
-                    <div
-                        onWheel={(e)=>{
-                            console.log('scrolled.')
-                            e.stopPropagation();
-                        }}
-                        className="
-                        absolute top-10 -left-20 bg-gray-100 p-5 w-80 rounded-lg shadow p-0 overflow-y-scroll scroll-auto
-                        ">
-                            {[1,2,3,4,5, 6, 7].map(n => <div>{n}<br/><br/><br/><br/><br/></div>)}
-                    </div>
-                    </div> */}
-
                 </div>
             </div>
         </div>
@@ -70,13 +79,23 @@ export function ChatBox({data}: {data: chatInter[]}){
     )
 }
 
-export function NotiBox(){
-
-    const noti = mockNoti;
+type notiInter = any; // TODO;
+export function NotiBox({data}: {data: notiInter[]}){
 
     return (
-        <div className="absolute top-10">
-
-        </div>
+        <>
+            {data.map(n => (
+                <div className="border-b border-gray-300 p-3 cursor-pointer hover:bg-gray-200">
+                    <div className="">
+                        <div className="grid grid-cols-4">
+                            <p className="font-bold col-start-1 col-end-4">{n.title}</p>
+                            <p className="font-thin text-xs text-right">{n.datetime}</p>
+                        </div>
+                        <p className="font-light text-sm">{n.content}</p>
+                    </div>
+                </div>
+            ))
+            }
+        </>
     )
 }

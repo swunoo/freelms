@@ -3,18 +3,16 @@ import sideopen from "../assets/images/icons/sideopen_lightgray.png"
 import { hrsToTimeStr } from "./Utils";
 
 
-type sideBarType = {child: ReactNode}
-
-export default function Sidebar({child}: sideBarType){
+export default function Sidebar({sideBarContent}: {sideBarContent: ReactNode}){
 
     const isPC = window.innerWidth > 768;
     const [showBar, setShowBar] = useState(isPC);
 
     return (
         <>
-            <div className={(showBar?"":"hidden ")+"shadow-lg bg-gray-300 min-h-screen md:w-fit w-full"}
+            <div className={(showBar?"":"hidden ")+"min-h-screen md:w-fit w-full md:w-2/5 border-2 rounded-xl m-2 bg-white overflow-hidden"}
             >
-                {child}
+                {sideBarContent}
             </div>
 
             {/* Sidebar Open Button */}
