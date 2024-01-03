@@ -43,18 +43,18 @@ function Navbar({active, setSideBarContent}: {active: string, setSideBarContent:
         setSideBarContent(<NotiBox data={notiData} />);
     }
 
-    // useEffect(openCalendar,[])
+    useEffect(openCalendar,[])
 
     return (
         <div
             className="flex justify-between items-center py-2 px-5 md:px-16 text-base sticky top-0 w-full shadow-sm bg-slate-100 z-20"
         >
             <p>freeLMS</p>
-            <div className="flex gap-7 items-center relative">
+            <div className="flex md:gap-7 gap-3 items-center relative">
                 <a href="/teacher/desk" className=   {active==='desk'?'font-bold':''}>Desk</a>
                 <a href="/teacher/members" className={active==='members'?'font-bold':''}>Members</a>
 
-                <div className="ml-7 flex gap-7 h-fit">
+                <div className="md:ml-7 flex md:gap-7 h-fit">
                     <IconBtn icon={calendarIcon} onclick={openCalendar}/>
                     <IconBtn icon={chatIcon} onclick={openChats}/>
                     <IconBtn icon={notiIcon} onclick={openNotis}/>
@@ -100,7 +100,7 @@ function ChatDetails({name, img, data, goBack}: {name: string, img: string, data
             </div>
 
 
-            <div className="overflow-y-scroll bg-yellow-300 h-96">
+            <div className="overflow-y-scroll bg-yellow-300 h-[30rem] md:h-96">
                 {data.map(c => (
                         <p className={
                             (!c.isReceived ? "ml-auto bg-gray-200" : "bg-blue-100")

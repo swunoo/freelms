@@ -25,7 +25,7 @@ export default function Desk(){
 type classData = any; // TODO;
 function Content({classes}: {classes: classData[]}){
 
-    const parent = "teacher/class/";
+    const parent = "class/";
 
     return (
         <div className="p-3 md:px-14 m-auto mb-10">
