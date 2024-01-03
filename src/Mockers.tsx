@@ -184,3 +184,60 @@ export const mockChat = [
         datetime: 'FRI 16:30'
     },
 ]
+
+export const mockChatDetails = [
+    {
+        id: '123',
+        isReceived: true,
+        msg: "Hello World",
+        datetime: '15:30'
+    },
+    {
+        id: '123',
+        isReceived: false,
+        msg: "Hello World",
+        datetime: 'THU 15:30'
+    },
+    {
+        id: '123',
+        isReceived: true,
+        msg: "Hello World",
+        datetime: 'TUE 15:30'
+    },
+    {
+        id: '123',
+        isReceived: true,
+        msg: "Hello World",
+        datetime: '15:30'
+    },
+    {
+        id: '123',
+        isReceived: false,
+        msg: "Hello World",
+        datetime: 'THU 15:30'
+    },
+    {
+        id: '123',
+        isReceived: true,
+        msg: "Hello World",
+        datetime: 'TUE 15:30'
+    },
+    {
+        id: '123',
+        isReceived: true,
+        msg: "Hello World",
+        datetime: '15:30'
+    },
+    {
+        id: '123',
+        isReceived: false,
+        msg: "Hello World",
+        datetime: 'THU 15:30'
+    },
+    {
+        id: '123',
+        isReceived: true,
+        msg: "Hello World",
+        datetime: 'TUE 15:30'
+    },
+]
