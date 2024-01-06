@@ -102,12 +102,36 @@ export const mockClassData = {
             sections: [
                 {
                     id: 's12345',
+                    type: 'lecture',
                     title: 'Discussion',
                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a></p><p><strong>BOLD</strong>LoremIpsum <a>Link</a></p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores praesentium non qui laborum fugiat, voluptatibus quam labore. Ipsam voluptas sit debitis alias ex a voluptatibus libero soluta quo porro ratione assumenda aliquid mollitia modi atque, eaque incidunt molestiae consequatur nulla, animi obcaecati eligendi tempora. Repudiandae deleniti eum omnis incidunt atque velit culpa recusandae quas quis, unde dolorem sit rerum perferendis est quia veritatis molestiae corrupti molestias commodi. Ea, nemo laudantium sequi optio asperiores cumque natus inventore, veniam tempora consequatur illum, dolore nihil corporis quam id soluta doloremque voluptatum reprehenderit fugiat! Molestiae corrupti nobis repellat necessitatibus quod, dignissimos maxime nam inventore. <a>Link</a></p>'
                 },
                 {
+                    id: 'q12345',
+                    type: 'quiz',
+                    title: 'Quiz',
+                    quizzes: [
+                        {id: 'q123', question: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores praesentium non qui laborum fugiat, voluptatibus quam labore.', answers: [
+                            'Dolores praesentium non qui laborum fugiat',
+                            'Repudiandae deleniti eum omnis incidunt atque velit',
+                            'Molestiae corrupti nobis repellat necessitatibus quod, dignissimos maxime nam inventore.'
+                        ], correctAnsIndex: 1},
+                        {id: 'q124', question: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores praesentium non qui laborum fugiat, voluptatibus quam labore.', answers: [
+                            'Dolores praesentium non qui laborum fugiat',
+                            'Repudiandae deleniti eum omnis incidunt atque velit',
+                            'Molestiae corrupti nobis repellat necessitatibus quod, dignissimos maxime nam inventore.'
+                        ], correctAnsIndex: 2},
+                        {id: 'q125', question: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores praesentium non qui laborum fugiat, voluptatibus quam labore.', answers: [
+                            'Dolores praesentium non qui laborum fugiat',
+                            'Repudiandae deleniti eum omnis incidunt atque velit',
+                            'Molestiae corrupti nobis repellat necessitatibus quod, dignissimos maxime nam inventore.'
+                        ], correctAnsIndex: 0}
+                    ]
+                },
+                {
                     id: 's12345',
-                    title: 'Discussion',
+                    type: 'assignment',
+                    title: 'Assignment',
                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a><strong>BOLD</strong></p>'
                 },
             ]
@@ -117,11 +141,13 @@ export const mockClassData = {
             sections: [
                 {
                     id: 's12345',
+                    type: 'lecture',
                     title: 'Discussion',
                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a></p>'
                 },
                 {
                     id: 's12345',
+                    type: 'lecture',
                     title: 'Discussion',
                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a></p>'
                 },
@@ -132,11 +158,13 @@ export const mockClassData = {
             sections: [
                 {
                     id: 's12345',
+                    type: 'lecture',
                     title: 'Discussion',
                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a></p>'
                 },
                 {
                     id: 's12345',
+                    type: 'lecture',
                     title: 'Discussion',
                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a></p>'
                 },

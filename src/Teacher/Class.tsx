@@ -5,7 +5,7 @@ import { mockClassData, mockLiveSessionList } from "../Mockers";
 import Layout from "./_Layout";
 import Navbar from "./_Navbar"
 import { useState } from "react";
-import { ClassMenu, ClassMetaEdit, Section, SectionContentDisplay, SectionContentEdit } from "../Common/Class";
+import { ClassMenu, ClassMetaEdit, SectionContentDisplay, SectionContentEdit, sectionType } from "../Common/Class";
 
 export default function Class(){
     
@@ -24,7 +24,7 @@ function Content () {
 
     const classData = mockClassData;
 
-    const [section, setSection] = useState<Section>(classData.units[0].sections[0]);
+    const [section, setSection] = useState<sectionType>(classData.units[0].sections[0]);
     const [mode, setMode] = useState<classModeType>('view')
 
     return (
@@ -49,9 +49,9 @@ function Content () {
             {(()=>{
                 switch(mode){
                     case 'view':
-                        return <SectionContentDisplay content={section.content} title={section.title} toEdit={()=>setMode('edit')} />
+                        return <SectionContentDisplay section={section} toEdit={()=>setMode('edit')} />
                     case 'edit':
-                        return <SectionContentEdit content={section.content} title={section.title} toView={()=>setMode('view')} />
+                        return <SectionContentEdit section={section} toView={()=>setMode('view')} />
                     case 'meta-edit':
                         return <ClassMetaEdit classData={classData} />
             }})()}
