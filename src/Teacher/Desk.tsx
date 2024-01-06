@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import Calendar from "../Common/Calendar";
 import Card from "../Common/Card";
 import ChatPanel from "../Common/ChatPanel";
 import SearchBar from "../Common/Inputs";
 import { hrsToTimeStr } from "../Common/Utils";
-import { mockClassList, mockLiveSessionList } from "../Mockers";
+import { mockClassData, mockClassList, mockLiveSessionList } from "../Mockers";
 import Navbar from "./_Navbar";
 import Sidebar, { LiveSession } from "../Common/Sidebar";
 import sideopen from "../assets/images/icons/sideopen_lightgray.png"
@@ -13,23 +13,73 @@ import { useNavigate } from "react-router-dom";
 
 export default function Desk(){
 
-    const classData = mockClassList;
-
     return (
         <Layout active="desk">
-            <Content classes={classData} />
+            <Content />
         </Layout>
     )
 }
 
 type classData = any; // TODO;
-function Content({classes}: {classes: classData[]}){
+function Content(){
 
     const parent = "class/";
+    const [classes, setClasses] = useState(mockClassList);
+
+    let searchConditions: {searchParam: string, completion: boolean|null} = {searchParam: '', completion: null};
+
+    const refreshClassList = () => {
+        const newClasses = mockClassList.filter(c => {
+            return (
+                (c.code.toLowerCase().includes(searchConditions.searchParam) || c.name.toLowerCase().includes(searchConditions.searchParam))
+                &&
+                (searchConditions.completion === null ? true : searchConditions.completion === c.isCompleted)
+            )
+        })
+        setClasses(newClasses);
+    }
+
+    const searchHandler = (e: ChangeEvent) => {
+        
+        const value = (e.target as HTMLInputElement).value.toLowerCase();
+        
+        if(value.length >= 3){
+            searchConditions.searchParam = value;
+            refreshClassList();
+
+        } else if (value.length === 0){
+            searchConditions.searchParam = '';
+            refreshClassList();
+        }
+    }
+
+    const dropdownHandler = (e: ChangeEvent) => {
+        const value = (e.target as HTMLInputElement).value.toLowerCase();
+        
+        if(value === 'all') searchConditions.completion = null;
+        if(value === 'inprogress') searchConditions.completion = false;
+        if(value === 'completed') searchConditions.completion = true;
+
+        refreshClassList();
+    }
 
     return (
         <div className="p-3 md:px-14 m-auto mb-10">
-            <SearchBar />
+            <header className="text-5xl font-thin md:mt-20 my-5 border-b pb-5">
+                Welcome back, Anon!
+            </header>
+            <SearchBar
+                searchName="Classes"
+                handleSearch={searchHandler}
+                dropdowns={[
+                    {label: "Show", name: "classOptions", 
+                    options: [
+                        {value: 'all', text: 'All'},
+                        {value: 'inprogress', text: 'In Progress'},
+                        {value: 'completed', text: 'Completed'}
+                    ], handleDropdown: dropdownHandler
+                }]} 
+            />
             <div className="flex gap-5 flex-wrap">
                 {
                     classes.map(c => {

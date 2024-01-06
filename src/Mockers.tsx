@@ -22,7 +22,8 @@ export const mockClassList = [
         img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
         color: "#153131",
         days: ["mon", "tue", "wed"],
-        startTime: 15, duration: 1
+        startTime: 15, duration: 1,
+        isCompleted: true
     },
     {
         id: '123',
@@ -31,7 +32,8 @@ export const mockClassList = [
         img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
         color: "#6A7FDB",
         days: ["mon", "tue", "wed"],
-        startTime: 15, duration: 1
+        startTime: 15, duration: 1,
+        isCompleted: false
     },
     {
         id: '123',
@@ -40,7 +42,8 @@ export const mockClassList = [
         img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
         color: "#45CB85",
         days: ["mon", "tue", "wed"],
-        startTime: 15, duration: 1
+        startTime: 15, duration: 1,
+        isCompleted: true
     },
     {
         id: '123',
@@ -49,7 +52,8 @@ export const mockClassList = [
         img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
         color: "#6A7FDB",
         days: ["mon", "tue", "wed"],
-        startTime: 15, duration: 1
+        startTime: 15, duration: 1,
+        isCompleted: false
     },
     {
         id: '123',
@@ -58,7 +62,8 @@ export const mockClassList = [
         img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
         color: "#45CB85",
         days: ["mon", "tue", "wed"],
-        startTime: 15, duration: 1
+        startTime: 15, duration: 1,
+        isCompleted: false
     },
 ]
 
