@@ -79,10 +79,10 @@ function Footer() {
                 <br />
                 A real-world usable freeLMS will be released soon.</p>
                 <div className="flex gap-3">
-                    <button className={css_button} onClick={()=>navigate("/admin")}>
+                    {/* <button className={css_button} onClick={()=>navigate("/admin")}>
                         <span>Admin</span>
                         <img src={open_btn_src} alt="Icon"/>
-                    </button>
+                    </button> */}
                     <button className={css_button} onClick={()=>navigate("/teacher")}>
                         <span>Teacher</span>
                         <img src={open_btn_src} alt="Icon"/>

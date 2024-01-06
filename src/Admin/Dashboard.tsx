@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import ChatPanel from "../Common/ChatPanel";
 import Navbar from "./_Navbar";
 import { Chart } from "tw-elements";
+import Layout from "./_Layout";
 
 export default Dashboard;
 
@@ -9,18 +10,9 @@ export default Dashboard;
 function Dashboard() {
 
     return (
-        <div
-            className="
-            md:grid
-            grid-cols-4
-            min-h-screen
-        ">
-            <div className="col-start-1 col-end-4">
-                <Navbar active='dashboard'/>
-                <Content />
-            </div>
-            <ChatPanel />
-        </div>
+        <Layout active="dashboard">
+            <Content />
+        </Layout>
     )
 }
 
