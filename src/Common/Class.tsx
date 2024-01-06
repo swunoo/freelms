@@ -21,7 +21,6 @@ export interface ClassUnit {
 type classType = any; //TODO
 
 
-
 export function SectionContentDisplay({content, title, toEdit}: {content: string, title: string, toEdit: ()=>void}){
     return(
         <>
@@ -111,7 +110,7 @@ export type classMenuType = {title: string, color: string, units: ClassUnit[], m
 
 export function ClassMenu ({title, color, units, mode, selectSection, setMode}: classMenuType) {
     return (
-        <aside className="border-r border-gray-300 min-h-screen">
+        <aside className="border-r border-gray-300 min-h-screen max-w-80">
             <div className="font-thin text-lg uppercase">
                 {title}
             </div>

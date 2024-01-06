@@ -27,8 +27,7 @@ function Content() {
     return (
         <div className="m-auto mt-10 px-10 md:px-20">
             <div className="flex gap-5 mb-5">
-                <IconBtn icon={staff_darkgray} label={'Staff'}/>
-                <IconBtn icon={teacher_darkgray} label={'Teacher'}/>
+                <IconBtn icon={teacher_darkgray} label={'Courses'}/>
                 <IconBtn icon={student_darkgray} label={'Student'}/>
             </div>
             <hr className="mb-5" />

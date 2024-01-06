@@ -100,7 +100,7 @@ function ChatDetails({name, img, data, goBack}: {name: string, img: string, data
             </div>
 
 
-            <div className="overflow-y-scroll bg-yellow-300 h-[30rem] md:h-96">
+            <div className="overflow-y-scroll bg-yellow-300 h-[30rem] md:h-full">
                 {data.map(c => (
                         <p className={
                             (!c.isReceived ? "ml-auto bg-gray-200" : "bg-blue-100")

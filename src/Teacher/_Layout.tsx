@@ -17,7 +17,7 @@ export default function Layout({ children, active }: { children: ReactNode, acti
             <div className="w-full relative">
                 <Navbar active={active} setSideBarContent={setSideBarContent} />
                 <div className="min-h-screen flex bg-white">
-                    <div id="desk-content" className="">
+                    <div id="desk-content" className="w-full">
                         {children}
                     </div>
 
