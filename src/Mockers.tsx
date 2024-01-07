@@ -97,17 +97,17 @@ export const mockClassData = {
     color: '#45CB85',
     units: [
         {
-            id: 'u123',
+            id: '96124143',
             title: 'Introduction',
             sections: [
                 {
-                    id: 's12345',
+                    id: '96124140',
                     type: 'lecture',
                     title: 'Discussion',
                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a></p><p><strong>BOLD</strong>LoremIpsum <a>Link</a></p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores praesentium non qui laborum fugiat, voluptatibus quam labore. Ipsam voluptas sit debitis alias ex a voluptatibus libero soluta quo porro ratione assumenda aliquid mollitia modi atque, eaque incidunt molestiae consequatur nulla, animi obcaecati eligendi tempora. Repudiandae deleniti eum omnis incidunt atque velit culpa recusandae quas quis, unde dolorem sit rerum perferendis est quia veritatis molestiae corrupti molestias commodi. Ea, nemo laudantium sequi optio asperiores cumque natus inventore, veniam tempora consequatur illum, dolore nihil corporis quam id soluta doloremque voluptatum reprehenderit fugiat! Molestiae corrupti nobis repellat necessitatibus quod, dignissimos maxime nam inventore. <a>Link</a></p>'
                 },
                 {
-                    id: 'q12345',
+                    id: '96124142',
                     type: 'quiz',
                     title: 'Quiz',
                     quizzes: [
@@ -129,41 +129,41 @@ export const mockClassData = {
                     ]
                 },
                 {
-                    id: 's12345',
+                    id: '96124143',
                     type: 'assignment',
                     title: 'Assignment',
                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a><strong>BOLD</strong></p>'
                 },
             ]
         }, {
-            id: 'u123',
+            id: '96124167',
             title: 'Introduction',
             sections: [
                 {
-                    id: 's12345',
+                    id: '96124198',
                     type: 'lecture',
                     title: 'Discussion',
                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a></p>'
                 },
                 {
-                    id: 's12345',
+                    id: '96124197',
                     type: 'lecture',
                     title: 'Discussion',
                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a></p>'
                 },
             ]
         }, {
-            id: 'u123',
+            id: '96124199',
             title: 'Introduction',
             sections: [
                 {
-                    id: 's12345',
+                    id: '96124104',
                     type: 'lecture',
                     title: 'Discussion',
                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a></p>'
                 },
                 {
-                    id: 's12345',
+                    id: '96124103',
                     type: 'lecture',
                     title: 'Discussion',
                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a></p>'

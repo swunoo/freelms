@@ -47,10 +47,6 @@ export function SectionContentEdit({section, toView}: {section: sectionType, toV
         toView();
     }
 
-    const deleteQuiz = (id: string) => {
-        document.getElementById('quiz_'+id)?.remove();
-    }
-
     const addQuiz = () => {
         const id = Date.now().toString().substring(5);
         const newQuiz = {id: id, question: '', answers: [''], correctAnsIndex: 0}
@@ -61,8 +57,8 @@ export function SectionContentEdit({section, toView}: {section: sectionType, toV
 
     }
 
-    const deleteAnswer = (id: string, index: number) => {
-        document.getElementById("ans_"+id+"_"+index)?.remove();
+    const deleteQuiz = (id: string) => {
+        document.getElementById('quiz_'+id)?.remove();
     }
 
     const addAnswer = (id: string) => {
@@ -74,6 +70,10 @@ export function SectionContentEdit({section, toView}: {section: sectionType, toV
         const parent = document.createElement("div");
         ReactDOM.render(<QuizAns id={id} ans={''} i={nextIndex}/>, parent);
         container?.appendChild(parent);
+    }
+
+    const deleteAnswer = (id: string, index: number) => {
+        document.getElementById("ans_"+id+"_"+index)?.remove();
     }
 
     function Quiz ({q}: {q: quizType}){

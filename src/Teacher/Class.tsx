@@ -53,7 +53,7 @@ function Content () {
                     case 'edit':
                         return <SectionContentEdit section={section} toView={()=>setMode('view')} />
                     case 'meta-edit':
-                        return <ClassMetaEdit classData={classData} />
+                        return <ClassMetaEdit classData={classData} toView={()=>setMode('view')} />
             }})()}
             </main>
         </div>

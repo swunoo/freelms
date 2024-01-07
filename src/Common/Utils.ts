@@ -16,6 +16,11 @@ export function hrsToTimeStr(hr: number, short?: boolean): string {
     );
 }
 
+export function getInputValue(name: string, parent?: Element): string {
+    const ele = parent ? parent.querySelector('input[name="'+name+'"]') : document.querySelector('input[name="'+name+'"]');
+    return (ele as HTMLInputElement).value;
+}
+
 // let touchStartX = 0, touchEndX = 0;
 // const handleSwipe = () => {
 //     if (touchEndX-touchStartX>150){
