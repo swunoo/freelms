@@ -1,11 +1,11 @@
-import { useParams } from "react-router-dom";
-import Calendar from "../Common/Calendar"
-import Sidebar, { LiveSession } from "../Common/Sidebar"
-import { mockClassData, mockLiveSessionList } from "../Mockers";
-import Layout from "./_Layout";
-import Navbar from "./_Navbar"
 import { useState } from "react";
-import { ClassMenu, ClassMetaEdit, SectionContentDisplay, SectionContentEdit, sectionType } from "../Common/Class";
+import { useParams } from "react-router-dom";
+import { SectionContentDisplay } from "../Common/Classroom/ContentDisplay";
+import { SectionContentEdit } from "../Common/Classroom/ContentEdit";
+import { ClassMenu, sectionType } from "../Common/Classroom/Menu";
+import { ClassMetaEdit } from "../Common/Classroom/MetaEdit";
+import { mockClassData } from "../Mockers";
+import Layout from "./_Layout";
 
 export default function Class(){
     
