@@ -3,8 +3,9 @@ import { FullBtn, IconBtn } from "../Buttons";
 import { quizType, sectionType } from "./Menu";
 import { Input } from "../Inputs";
 import ReactDOM from "react-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import deleteIcon from "../../assets/images/icons/delete_black.png";
+import { ClassData } from "../../Data";
 
 export function SectionContentEdit({section, toView}: {section: sectionType, toView: ()=>void}){
     
@@ -40,6 +41,8 @@ export function SectionContentEdit({section, toView}: {section: sectionType, toV
 
         section.title = (document.querySelector('input[name="section_title"]') as HTMLInputElement).value;
 
+        const classObj = new ClassData();
+        classObj.updateSection(section);
         toView();
     }
 

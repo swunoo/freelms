@@ -3,6 +3,8 @@ import { FullBtn } from "../Buttons";
 import { Dropdown, Input } from "../Inputs";
 import { ClassUnit, classType, sectionType } from "./Menu";
 import { getInputValue, getSelectValue } from "../Utils";
+import { useEffect } from "react";
+import { ClassData } from "../../Data";
 
 export function ClassMetaEdit({classData, toView}: {classData: classType, toView: ()=>void}){
 
@@ -64,6 +66,8 @@ export function ClassMetaEdit({classData, toView}: {classData: classType, toView
             }
         }
 
+        const classObj = new ClassData();
+        classObj.updateClass(classData);
         toView();
     }
 

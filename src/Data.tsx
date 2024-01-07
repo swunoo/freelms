@@ -1,13 +1,14 @@
-import { classType } from "./Common/Classroom/Menu";
+import { ClassUnit, classType, sectionType } from "./Common/Classroom/Menu";
 import profile_pic from "./assets/images/profile.png";
 
 
 function readLocalStorage(key: string){
-    const freelmsData = localStorage.getItem("freelms");
+    
+    const freelmsData = localStorage.getItem(key);
+    
     if(freelmsData){
-        const data = JSON.parse(freelmsData);
-        return data[key];
-    }
+        return JSON.parse(freelmsData);
+    } 
     return undefined;
 }
 
@@ -325,6 +326,45 @@ export class ClassData {
     getClass(id: string){
         const matchingClasses = this.classList.filter((c: classType) => c.id === id)
         return matchingClasses ? matchingClasses[0] : null;
+    }
+
+    updateSection(section: sectionType){
+        for(const clazz of this.classList){
+            for(const unit of clazz.units){
+                for(const curSection of unit.sections){
+                    if(curSection.id === section.id){
+                        unit.sections = unit.sections.filter((s: sectionType)=>s.id!==section.id)
+                        unit.sections.push(section);
+                        localStorage.setItem('classList', JSON.stringify(this.classList));
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    updateUnit (unit: ClassUnit){
+        for(const clazz of this.classList){
+            for(const curUnit of clazz.units){
+                if(curUnit.id === unit.id){
+                    clazz.units = clazz.units.filter((u: ClassUnit)=>u.id!==unit.id)
+                    clazz.units.push(unit);
+                    localStorage.setItem('classList', JSON.stringify(this.classList));
+                    return;
+                }
+            }
+        }
+    }
+
+    updateClass (clazz: classType){
+        for(const curClazz of this.classList){
+            if(curClazz.id === clazz.id){
+                this.classList = this.classList.filter((c: classType)=>c.id!==clazz.id)
+                this.classList.push(clazz);
+                localStorage.setItem('classList', JSON.stringify(this.classList));
+                return;
+            }
+        }
     }
 }
 

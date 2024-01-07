@@ -12,20 +12,21 @@ export default function Class(){
 
     const {id} = useParams();
     const classObj = new ClassData()
-    const data = id ? classObj.getClass(id) : null;
-    
+
 
     return (
         <Layout active="">
-            { data ? <Content classData={data}/> : <Error /> }
+            {id ? <Content classId={id} classObj={classObj}/> : <Error/>}
         </Layout>
     )
 }
 
 export type classModeType = 'meta-edit'|'edit'|'view';
 
-function Content ({classData}: {classData: classType}) {
+function Content ({classId, classObj}: {classId: string, classObj: any}) {
 
+    const classData = classObj.getClass(classId);
+    
     const [section, setSection] = useState<sectionType>(classData.units[0].sections[0]);
     const [mode, setMode] = useState<classModeType>('view')
 
