@@ -59,3 +59,17 @@ export function Input({label, name, value}: {label: string, name: string, value?
         </label>
     )
 }
+
+export function Dropdown({label, name, options, value}: {label?:string, value?:string, name:string, options:{value: string, text: string}[]}){
+
+    const [selectValue, setSelectValue] = useState(value);
+
+    return (
+        <label className="flex gap-3 items-center">
+            {label??""}
+            <select name={name} value={selectValue} onChange={e => setSelectValue(e.target.value)} className="block w-40 h-10 rounded-lg border p-2 text-sm focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400">
+                {options.map(o => <option value={o.value}>{o.text}</option>)}
+            </select>
+        </label>
+    )
+}

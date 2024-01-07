@@ -1,8 +1,8 @@
 import ReactDOM from "react-dom";
 import { FullBtn } from "../Buttons";
-import { Input } from "../Inputs";
+import { Dropdown, Input } from "../Inputs";
 import { ClassUnit, classType, sectionType } from "./Menu";
-import { getInputValue } from "../Utils";
+import { getInputValue, getSelectValue } from "../Utils";
 
 export function ClassMetaEdit({classData, toView}: {classData: classType, toView: ()=>void}){
 
@@ -34,8 +34,21 @@ export function ClassMetaEdit({classData, toView}: {classData: classType, toView
                 const existingSectionIds: string[] = existingUnit.sections.map((sec:sectionType) => sec.id);
                 [...unit.getElementsByClassName('unit_section')].forEach(sectionEle => {
                     const id = sectionEle.id.substring(5);
-                    if(!existingSectionIds.includes(id)){
-                        const newSection = {id: id, type: 'lecture', title: 'New Section'}
+                    const type = getSelectValue('type', sectionEle);
+                    if(existingSectionIds.includes(id)){
+                        const existingSection = existingUnit.sections.filter((sec:sectionType) => sec.id === id)[0];
+                        existingSection.type = type;
+                        if(type === 'Lecture'){
+                            delete existingSection.quizzes;
+                            existingSection.content = "";
+                        }
+                        else {
+                            delete existingSection.content;
+                            existingSection.quizzes = [];
+                        }
+
+                    } else {
+                        const newSection = {id: id, type: type, title: 'New Section'}
                         existingUnit.sections.push(newSection);
                     }
                 })
@@ -96,13 +109,20 @@ export function ClassMetaEdit({classData, toView}: {classData: classType, toView
     }
 
     function Section ({section}: {section: sectionType}){
+        const typeOptions = [
+            {value: 'lecture', text: "Lecture"},
+            {value: 'quiz', text: "Quiz"}
+        ]
         return (
             <li
             id={"sect_"+section.id}
             className="list-decimal my-3 flex justify-between unit_section"
             >
                 <span>{section.title}</span>
-                <FullBtn onclick={() => deleteSection(section.id)} label="Delete Section"/>
+                <div className="flex gap-5">
+                    <Dropdown name="type" options={typeOptions} value={section.type}/>
+                    <FullBtn onclick={() => deleteSection(section.id)} label="Delete Section"/>
+                </div>
             </li>
         )
     }
