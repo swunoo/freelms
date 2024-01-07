@@ -2,27 +2,29 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { SectionContentDisplay } from "../Common/Classroom/ContentDisplay";
 import { SectionContentEdit } from "../Common/Classroom/ContentEdit";
-import { ClassMenu, sectionType } from "../Common/Classroom/Menu";
+import { ClassMenu, classType, sectionType } from "../Common/Classroom/Menu";
 import { ClassMetaEdit } from "../Common/Classroom/MetaEdit";
-import { mockClassData } from "../Mockers";
+import { ClassData } from "../Data";
 import Layout from "./_Layout";
+import Error from "../Error";
 
 export default function Class(){
-    
+
     const {id} = useParams();
+    const classObj = new ClassData()
+    const data = id ? classObj.getClass(id) : null;
+    
 
     return (
         <Layout active="">
-            <Content/>
+            { data ? <Content classData={data}/> : <Error /> }
         </Layout>
     )
 }
 
 export type classModeType = 'meta-edit'|'edit'|'view';
 
-function Content () {
-
-    const classData = mockClassData;
+function Content ({classData}: {classData: classType}) {
 
     const [section, setSection] = useState<sectionType>(classData.units[0].sections[0]);
     const [mode, setMode] = useState<classModeType>('view')
