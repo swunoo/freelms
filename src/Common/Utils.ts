@@ -21,6 +21,11 @@ export function getInputValue(name: string, parent?: Element): string {
     return (ele as HTMLInputElement).value;
 }
 
+export function getSelectValue(name: string, parent?: Element): string {
+    const ele = parent ? parent.querySelector('select[name="'+name+'"]') : document.querySelector('select[name="'+name+'"]');
+    return (ele as HTMLSelectElement).value;
+}
+
 // let touchStartX = 0, touchEndX = 0;
 // const handleSwipe = () => {
 //     if (touchEndX-touchStartX>150){
