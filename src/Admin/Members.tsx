@@ -1,15 +1,13 @@
-import ChatPanel from "../Common/ChatPanel";
 import SearchBar from "../Common/Inputs";
-import Navbar from "./_Navbar";
 
-import teacher_darkgray from "../assets/images/icons/teacher_darkgray.png";
-import student_darkgray from "../assets/images/icons/student_darkgray.png";
-import staff_darkgray from "../assets/images/icons/staff_darkgray.png";
 import { useState } from "react";
-import Modal from "../Common/Modal";
 import { IconBtn } from "../Common/Buttons";
-import { mockUser, mockUserList } from "../Mockers";
+import Modal from "../Common/Modal";
 import { BaseTable, BaseTableData, BaseTableHeader, BaseTableNav } from "../Common/Table";
+import { UserData, userType } from "../Data";
+import staff_darkgray from "../assets/images/icons/staff_darkgray.png";
+import student_darkgray from "../assets/images/icons/student_darkgray.png";
+import teacher_darkgray from "../assets/images/icons/teacher_darkgray.png";
 import Layout from "./_Layout";
 
 /* Members screen of Admin */
@@ -40,6 +38,8 @@ function Content() {
 
 function Table() {
 
+    const userObj = new UserData();
+
     const [showModal, setShowModal] = useState(false);
     const [modalTitle, setModalTitle] = useState('Details');
     const [modalChild, setModalChild] = useState(<></>);
@@ -47,19 +47,19 @@ function Table() {
     // When a row is clicked
     const showDetails = (id: string) => {
 
-        const user = mockUser;
+        const user = userObj.getUser(id);
 
         // Modal with each item of user displayed inside.
         setModalChild(
             <div className="flex w-full justify-center gap-10 p-5 md:px-16">
-                <img className="self-center flex-initial" src={mockUser.profilePic} alt="Profile Pic" />
+                <img className="self-center flex-initial" src={user.profilePic} alt="Profile Pic" />
                 <ul className="grid grid-cols-3 gap-3 text-base justify-center">
-                    {(Object.keys(user) as Array<keyof typeof user>)
-                        .map((key: keyof typeof user) => {
+                    {(Object.keys(user) as Array<keyof userType>)
+                        .map((key: keyof userType) => {
                             return (
                                 <>
-                                    <li className="col-start-1 col-end-2 font-light uppercase">{key}:</li>
-                                    <li className="col-start-2 col-end-4" key={key}>{user[key]}</li>
+                                    <li className="col-start-1 col-end-2 font-light uppercase">{key + ":"}</li>
+                                    <li className="col-start-2 col-end-4">{user[key]}</li>
                                 </>
                             )
                     })}
@@ -70,7 +70,8 @@ function Table() {
         setShowModal(true);
     }
 
-    const keys = Object.keys(mockUserList[0])
+    const users = userObj.getUserList();
+    const keys = Object.keys(users[0])
 
     return (
         <div className="overflow-x-auto bg-white  overflow-y-scroll">
@@ -83,7 +84,7 @@ function Table() {
                 }
                 tbody={
                     <>
-                    {mockUserList.map(obj => <BaseTableData clickHandler={() => showDetails(obj.id)} data={Object.values(obj)} />)}
+                    {users.map((obj: userType) => <BaseTableData clickHandler={() => showDetails(obj.id)} data={Object.values(obj)} />)}
                     </>
                 }
             />

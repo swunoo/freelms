@@ -1,15 +1,9 @@
-import { ChangeEvent, useState } from "react";
-import Calendar from "../Common/Calendar";
+import { ChangeEvent, useEffect, useState } from "react";
 import Card from "../Common/Card";
-import ChatPanel from "../Common/ChatPanel";
 import SearchBar from "../Common/Inputs";
 import { hrsToTimeStr } from "../Common/Utils";
-import { mockClassData, mockClassList, mockLiveSessionList } from "../Mockers";
-import Navbar from "./_Navbar";
-import Sidebar, { LiveSession } from "../Common/Sidebar";
-import sideopen from "../assets/images/icons/sideopen_lightgray.png"
+import { ClassData } from "../Data";
 import Layout from "./_Layout";
-import { useNavigate } from "react-router-dom";
 
 export default function Desk(){
 
@@ -23,44 +17,50 @@ export default function Desk(){
 type classData = any; // TODO;
 function Content(){
 
+    const classObj = new ClassData();
+    const classList = classObj.getClassList();
+
     const parent = "class/";
-    const [classes, setClasses] = useState(mockClassList);
+    const [classes, setClasses] = useState(classList);
 
-    let searchConditions: {searchParam: string, completion: boolean|null} = {searchParam: '', completion: null};
+    type SearchConditions = {searchParam: string, completion: boolean|null};
+    const [searcher, setSearcher] = useState<SearchConditions>({searchParam: '', completion: null})
 
-    const refreshClassList = () => {
-        const newClasses = mockClassList.filter(c => {
+    // Refresh Class List
+    useEffect(() => {        
+        const newClasses = classList.filter((c: classData) => {
             return (
-                (c.code.toLowerCase().includes(searchConditions.searchParam) || c.name.toLowerCase().includes(searchConditions.searchParam))
+                (c.code.toLowerCase().includes(searcher.searchParam) || c.title.toLowerCase().includes(searcher.searchParam))
                 &&
-                (searchConditions.completion === null ? true : searchConditions.completion === c.isCompleted)
+                (searcher.completion === null 
+                    ? true 
+                    : (searcher.completion === c.isCompleted))
             )
         })
         setClasses(newClasses);
-    }
+
+    }, [searcher]);
 
     const searchHandler = (e: ChangeEvent) => {
         
         const value = (e.target as HTMLInputElement).value.toLowerCase();
         
         if(value.length >= 3){
-            searchConditions.searchParam = value;
-            refreshClassList();
+            setSearcher({...searcher, searchParam: value})
 
         } else if (value.length === 0){
-            searchConditions.searchParam = '';
-            refreshClassList();
+            setSearcher({...searcher, searchParam: ''})
         }
     }
 
     const dropdownHandler = (e: ChangeEvent) => {
         const value = (e.target as HTMLInputElement).value.toLowerCase();
         
-        if(value === 'all') searchConditions.completion = null;
-        if(value === 'inprogress') searchConditions.completion = false;
-        if(value === 'completed') searchConditions.completion = true;
+        let status = null;
+        if(value === 'inprogress') status = false;
+        else if(value === 'completed') status = true;
 
-        refreshClassList();
+        setSearcher({...searcher, completion: status})
     }
 
     return (
@@ -82,7 +82,7 @@ function Content(){
             />
             <div className="flex gap-5 flex-wrap">
                 {
-                    classes.map(c => {
+                    classes.map((c: classData) => {
                         const days = c.days[0] 
                                     + (c.days.length>1 ? " - " + c.days[c.days.length-1] : "")
                         const startTime = hrsToTimeStr(c.startTime);
@@ -97,7 +97,7 @@ function Content(){
                             content={
                                 <>
                                     <h3 className="text-lg font-bold w-full">
-                                        {c.code}<br/>{c.name}
+                                        {c.code}<br/>{c.title}
                                     </h3>
                                     <hr className="my-3 border-2" style={{borderColor: c.color}} />
                                     <p className="uppercase text-xs">
