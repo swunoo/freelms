@@ -1,28 +1,31 @@
 import { ReactNode, useEffect } from "react";
+import { IconBtn } from "../Common/Buttons";
 import { ChatBox, ChatDetails, NotiBox } from "../Common/ChatPanel";
-import { mockChat, mockChatDetails, mockNoti } from "../Mockers";
-import calendarIcon from "../assets/images/icons/calendar_blue.png";
+import { ChatData, NotiData } from "../Data";
 import chatIcon from "../assets/images/icons/chat_blue.png";
 import notiIcon from "../assets/images/icons/noti_blue.png";
-import { IconBtn } from "../Common/Buttons";
 
 export default Navbar;
 
 
 /* Navbar for Admin */
 function Navbar({ active, setSideBarContent }: { active: string, setSideBarContent: (r: ReactNode)=>void}) {
+
+    const chatObj = new ChatData();
+    const notiObj = new NotiData();
+
     const openChats = () => {
-        const chatData = mockChat;
+        const chatData = chatObj.getChatList();
         setSideBarContent(<ChatBox data={chatData} toChatDetails={openMessageDetails} />);
     }
     
     const openMessageDetails = (id: string, name: string, photo: string) => {
-        const chatDetails = mockChatDetails;
+        const chatDetails = chatObj.getChatDetails(id);
         setSideBarContent(<ChatDetails name={name} img={photo} data={chatDetails} goBack={openChats} />);
     }
     
     const openNotis = () => {
-        const notiData = mockNoti;
+        const notiData = notiObj.getNotiList();
         setSideBarContent(<NotiBox data={notiData} />);
     }
     

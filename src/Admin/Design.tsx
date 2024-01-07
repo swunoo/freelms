@@ -1,15 +1,12 @@
+import Layout from "./_Layout";
 import Navbar from "./_Navbar";
 
 /* Design panel for Admin */
 export default function Design () {
     return (
-        <div
-            className="
-            min-h-screen
-        ">
-            <Navbar active='design'/>
+        <Layout active="design">
             <Content />
-        </div>
+        </Layout>
     )
 }
 

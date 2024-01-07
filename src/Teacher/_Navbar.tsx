@@ -1,25 +1,29 @@
 import { ReactNode, useEffect } from "react";
 import { IconBtn } from "../Common/Buttons";
 import Calendar from "../Common/Calendar";
+import { ChatBox, ChatDetails, NotiBox } from "../Common/ChatPanel";
 import { LiveSession } from "../Common/Sidebar";
-import { mockChat, mockChatDetails, mockLiveSessionList, mockNoti } from "../Mockers";
+import { ChatData, LiveData, NotiData, liveSessionType } from "../Data";
 import calendarIcon from "../assets/images/icons/calendar_blue.png";
 import chatIcon from "../assets/images/icons/chat_blue.png";
 import notiIcon from "../assets/images/icons/noti_blue.png";
-import { ChatBox, ChatDetails, NotiBox } from "../Common/ChatPanel";
 
 export default Navbar;
 
 function Navbar({active, setSideBarContent}: {active: string, setSideBarContent: (r: ReactNode)=>void}){
 
+    const liveSessionObj = new LiveData();
+    const chatObj = new ChatData();
+    const notiObj = new NotiData();
+
     const openCalendar = () => {
-        const liveSessionData = mockLiveSessionList;
+        const liveSessionData = liveSessionObj.getLiveSessionList();
 
         setSideBarContent(
         <>
             <Calendar />
             <div className="p-3">
-                {liveSessionData.map(d => {
+                {liveSessionData.map((d: liveSessionType) => {
                     return (
                         <LiveSession data={d} />
                     )
@@ -29,17 +33,17 @@ function Navbar({active, setSideBarContent}: {active: string, setSideBarContent:
     }
 
     const openChats = () => {
-        const chatData = mockChat;
+        const chatData = chatObj.getChatList();
         setSideBarContent(<ChatBox data={chatData} toChatDetails={openMessageDetails}/>);
     }
 
     const openMessageDetails = (id: string, name: string, photo: string) => {
-        const chatDetails = mockChatDetails;
+        const chatDetails = chatObj.getChatDetails(id);
         setSideBarContent(<ChatDetails name={name} img={photo} data={chatDetails} goBack={openChats}/>);
     }
 
     const openNotis = () => {
-        const notiData = mockNoti;
+        const notiData = notiObj.getNotiList();
         setSideBarContent(<NotiBox data={notiData} />);
     }
 

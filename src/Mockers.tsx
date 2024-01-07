@@ -1,3 +1,10 @@
+/**
+ * DEPRECATED.
+ * Was used to mock data while doing the basics.
+ * Please use Data.tsx from now on.
+ */
+
+
 import profile_pic from "./assets/images/profile.png";
 
 export type mockUserType = { id: string, alias: string, gender: 'male' | 'female' | 'other', class: string };
@@ -18,7 +25,7 @@ export const mockClassList = [
     {
         id: '123',
         code: "CS 2401-01",
-        name: "Software Engineering 1",
+        title: "Software Engineering 1",
         img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
         color: "#153131",
         days: ["mon", "tue", "wed"],
@@ -28,7 +35,7 @@ export const mockClassList = [
     {
         id: '123',
         code: "CS 2401-01",
-        name: "Software Engineering 1",
+        title: "Software Engineering 1",
         img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
         color: "#6A7FDB",
         days: ["mon", "tue", "wed"],
@@ -38,7 +45,7 @@ export const mockClassList = [
     {
         id: '123',
         code: "CS 2401-01",
-        name: "Software Engineering 1",
+        title: "Software Engineering 1",
         img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
         color: "#45CB85",
         days: ["mon", "tue", "wed"],
@@ -48,7 +55,7 @@ export const mockClassList = [
     {
         id: '123',
         code: "CS 2401-01",
-        name: "Software Engineering 1",
+        title: "Software Engineering 1",
         img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
         color: "#6A7FDB",
         days: ["mon", "tue", "wed"],
@@ -58,7 +65,7 @@ export const mockClassList = [
     {
         id: '123',
         code: "CS 2401-01",
-        name: "Software Engineering 1",
+        title: "Software Engineering 1",
         img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
         color: "#45CB85",
         days: ["mon", "tue", "wed"],

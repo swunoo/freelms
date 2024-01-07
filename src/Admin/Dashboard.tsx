@@ -1,6 +1,4 @@
 import { useEffect } from "react";
-import ChatPanel from "../Common/ChatPanel";
-import Navbar from "./_Navbar";
 import { Chart } from "tw-elements";
 import Layout from "./_Layout";
 
