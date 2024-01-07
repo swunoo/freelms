@@ -1,5 +1,5 @@
 import Quill from "quill"
-import { FormEvent, useEffect, useRef, useState } from "react"
+import { FormEvent, ReactNode, useEffect, useRef, useState } from "react"
 import { FullBtn, IconBtn } from "./Buttons";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
@@ -7,6 +7,8 @@ import { Input } from "./Inputs";
 import { classModeType } from "../Teacher/Class";
 import { mockClassData } from "../Mockers";
 import deleteIcon from "../assets/images/icons/delete_black.png";
+import ReactDOM from "react-dom";
+import React from "react";
 
 export type classType = any; //TODO
 export type sectionType = any; //TODO
@@ -114,19 +116,36 @@ export function SectionContentEdit({section, toView}: {section: sectionType, toV
     const [sectionValue, setSectionValue] = useState(section.content);
 
     const handleConfirm = () => {
-        for(const unit of mockClassData.units){
-            for(const sec of unit.sections){
-                if(sec.id === section.id){
-                    if(sec.type === 'quiz'){
 
-                    } else {
-                        sec.content = sectionValue;
-                    }
-                    toView();
-                    return;
+        if(section.type === 'quiz'){
+
+            const newQuizzes = [...document.getElementsByClassName('quiz_data')].map(qd => {
+                const id = qd.id.substring(5)
+                let correctAnsIndex = 0
+                const answers = [...qd.getElementsByClassName('ans_'+id)]
+                                .map((ans, i) => {
+                                    if((ans.querySelector('input[type="radio"]') as HTMLInputElement).checked){
+                                        correctAnsIndex = i;
+                                    }
+                                    return (ans.querySelector('input[type="text"]') as HTMLInputElement).value
+                                });
+                return {
+                    id: id,
+                    question: (qd.querySelector('input[name="'+id+'_q"]') as HTMLInputElement).value,
+                    answers: answers,
+                    correctAnsIndex: correctAnsIndex
                 }
-            }
+            })
+
+            section.quizzes = newQuizzes;
+
+        } else {
+            section.content = sectionValue;
         }
+
+        section.title = (document.querySelector('input[name="section_title"]') as HTMLInputElement).value;
+
+        toView();
     }
 
     const handleCancel = () => {
@@ -134,63 +153,90 @@ export function SectionContentEdit({section, toView}: {section: sectionType, toV
     }
 
     const deleteQuiz = (id: string) => {
-        section.quizzes = section.quizzes.filter((q: quizType) => q.id != id);
+        // section.quizzes = section.quizzes.filter((q: quizType) => q.id != id);
         document.getElementById('quiz_'+id)?.remove();
     }
 
     const addQuiz = () => {
+        const id = Date.now().toString().substring(5);
+        const newQuiz = {id: id, question: '', answers: [''], correctAnsIndex: 0}
+        const container = document.getElementById('quiz_container');
+        const parent = document.createElement("div");
+        ReactDOM.render(<Quiz q={newQuiz}/>, parent);
+        container?.appendChild(parent);
 
     }
 
     const deleteAnswer = (id: string, index: number) => {
-        
+        // const quiz = section.quizzes.filter((q: quizType) => q.id===id)[0];        
+        // quiz.answers = quiz.answers.filter((_: any,i: number)=>i!==index);
+        document.getElementById("ans_"+id+"_"+index)?.remove();
     }
 
     const addAnswer = (id: string) => {
-        
+        const container = document.getElementById('quiz_' + id);
+        let nextIndex = 0;
+        while(document.getElementById("ans_"+id+"_"+nextIndex)){
+            nextIndex ++;
+        }
+        const parent = document.createElement("div");
+        ReactDOM.render(<QuizAns id={id} ans={''} i={nextIndex}/>, parent);
+        container?.appendChild(parent);
+    }
+
+    function Quiz ({q}: {q: quizType}){
+        return (<div
+            className="my-5 pb-5 border-b gap-x-5 gap-y-1 quiz_data"
+            id={"quiz_"+q.id}
+        >
+            <div className="flex gap-5 mb-5 items-center">
+                <h3 className="text-lg">Quiz <span className="font-thin mx-5">id: {q.id}</span></h3>
+                <FullBtn onclick={()=>deleteQuiz(q.id)} label="Delete Quiz"/>
+            </div>
+            <div className="grid grid-cols-6">
+                <div className="mb-3 col-start-1 col-end-6">
+                    <Input label="Question" name={q.id + '_q'} value={q.question} />
+                </div>
+                <div className="flex justify-center">
+                    <FullBtn onclick={()=>addAnswer(q.id)} label="Add Answer"/>
+                </div>
+            </div>
+            {
+                q.answers.map((ans: string, i: number) => <QuizAns id={q.id} i={i} ans={ans} />)
+            }
+        </div>)
+    }
+
+    function QuizAns ({id, ans, i}:{id:any, ans:string, i: number}){
+        return(
+            <div id={"ans_"+id+"_"+i} className={"grid grid-cols-6 ans_"+id}>
+                <div className="col-start-1 col-end-6">
+                <Input label={"Answer "+(i+1)} name={id + '_a'+i} value={ans} /></div>
+                <div className="flex justify-evenly">
+                    <IconBtn onclick={()=>deleteAnswer(id, i)} icon={deleteIcon}/>
+                    <input className="w-5 cursor-pointer" type="radio" name={id} value={i}/>
+                </div>
+            </div>
+        )
     }
 
     return(
         <div
             className="my-10"
         >
-            <Input label="Title" name="sectionTitle" value={section.title} />
+            <Input label="Title" name="section_title" value={section.title} />
 
             <hr className="my-10" />
 
             {section.type === "quiz"
 
             ? <>
-                {section.quizzes.map((q: quizType, i: number) => (
-                    <div
-                        className="my-5 pb-5 border-b grid grid-cols-6 gap-x-5 gap-y-1"
-                        id={"quiz_"+q.id}
-                    >
-                        <div className="flex gap-5 mb-5 items-center col-start-1 col-end-7">
-                            <h3 className="text-lg">Quiz No. {i+1}</h3>
-                            <FullBtn onclick={()=>deleteQuiz(q.id)} label="Delete Quiz"/>
-                        </div>
-                        <div className="col-start-1 col-end-6 mb-3">
-                            <Input label="Question" name={q.name + '_q'} value={q.question} />
-                        </div>
-                        <FullBtn onclick={()=>addAnswer(q.id)} label="Add Answer"/>
-                        {
-                            q.answers.map((ans: string, i: number) => (
-                                <><div className="col-start-1 col-end-6">
-                                <Input label={"Answer "+(i+1)} name={q.id + '_a'+i} value={ans} /></div>
-                                <div className="flex justify-evenly">
-                                    <IconBtn onclick={()=>deleteAnswer(q.id, i)} icon={deleteIcon}/>
-                                    <input className="w-5 cursor-pointer" type="radio" name={q.id} value={i}/>
-                                </div>
-                                </>
-                            ))
-                        }
-                    </div>
-                ))}
+                <div id="quiz_container">
+                    {section.quizzes.map((q: quizType) => <Quiz q={q}/>)}
+                </div>
                 <div className="flex justify-end my-5 pb-5 border-b">
                     <FullBtn onclick={addQuiz} label="Add Quiz"/>
                 </div>
-
             </>
 
             :<ReactQuill
@@ -219,13 +265,13 @@ export function SectionContentEdit({section, toView}: {section: sectionType, toV
 export function ClassMetaEdit({classData}: classType){
     return (
         <div className="">
-            <Input label="Course Title" name="sectionTitle" value={classData.title} />
+            <Input label="Course Title" name="section_title" value={classData.title} />
             <div className="flex justify-end gap-3 py-3 border-b">
                 <FullBtn label="Add Unit"/>
             </div>
             {classData.units.map((unit: ClassUnit) => (
                 <div className="rounded-xl py-3 px-5 bg-gray-200 shadow my-5">
-                    <Input label="Unit Title" name="sectionTitle" value={unit.title} />
+                    <Input label="Unit Title" name="section_title" value={unit.title} />
                 <div className="flex justify-end gap-3 py-3 border-b">
                     <FullBtn label="Delete Unit"/>
                     <FullBtn label="Add Section"/>

@@ -111,17 +111,17 @@ export const mockClassData = {
                     type: 'quiz',
                     title: 'Quiz',
                     quizzes: [
-                        {id: 'q123', question: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores praesentium non qui laborum fugiat, voluptatibus quam labore.', answers: [
+                        {id: '96124143', question: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores praesentium non qui laborum fugiat, voluptatibus quam labore.', answers: [
                             'Dolores praesentium non qui laborum fugiat',
                             'Repudiandae deleniti eum omnis incidunt atque velit',
                             'Molestiae corrupti nobis repellat necessitatibus quod, dignissimos maxime nam inventore.'
                         ], correctAnsIndex: 1},
-                        {id: 'q124', question: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores praesentium non qui laborum fugiat, voluptatibus quam labore.', answers: [
+                        {id: '96124145', question: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores praesentium non qui laborum fugiat, voluptatibus quam labore.', answers: [
                             'Dolores praesentium non qui laborum fugiat',
                             'Repudiandae deleniti eum omnis incidunt atque velit',
                             'Molestiae corrupti nobis repellat necessitatibus quod, dignissimos maxime nam inventore.'
                         ], correctAnsIndex: 2},
-                        {id: 'q125', question: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores praesentium non qui laborum fugiat, voluptatibus quam labore.', answers: [
+                        {id: '96124147', question: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores praesentium non qui laborum fugiat, voluptatibus quam labore.', answers: [
                             'Dolores praesentium non qui laborum fugiat',
                             'Repudiandae deleniti eum omnis incidunt atque velit',
                             'Molestiae corrupti nobis repellat necessitatibus quod, dignissimos maxime nam inventore.'
