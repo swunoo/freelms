@@ -3,11 +3,9 @@ import profile_pic from "./assets/images/profile.png";
 
 
 function readLocalStorage(key: string){
-    
-    const freelmsData = localStorage.getItem(key);
-    
-    if(freelmsData){
-        return JSON.parse(freelmsData);
+    const data = localStorage.getItem(key);
+    if(data){
+        return JSON.parse(data);
     } 
     return undefined;
 }

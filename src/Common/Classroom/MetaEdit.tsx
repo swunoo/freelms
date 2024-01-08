@@ -3,10 +3,9 @@ import { FullBtn } from "../Buttons";
 import { Dropdown, Input } from "../Inputs";
 import { ClassUnit, classType, sectionType } from "./Menu";
 import { getInputValue, getSelectValue } from "../Utils";
-import { useEffect } from "react";
 import { ClassData } from "../../Data";
 
-export function ClassMetaEdit({classData, toView}: {classData: classType, toView: ()=>void}){
+export function ClassMetaEdit({classData, styling, toView}: {classData: classType, styling: any, toView: ()=>void}){
 
     const handleConfirm = () => {
 
@@ -99,15 +98,15 @@ export function ClassMetaEdit({classData, toView}: {classData: classType, toView
 
     function Unit ({unit}: {unit: ClassUnit}){
         return (
-            <div id={"unit_"+unit.id} className="rounded-xl py-3 px-5 bg-gray-200 shadow my-5 unit_unit">
-                <Input label="Unit Title" name="unit_title" value={unit.title} />
-            <div className="flex justify-end gap-3 py-3 border-b">
-                <FullBtn onclick={() => deleteUnit(unit.id)} label="Delete Unit"/>
-                <FullBtn onclick={() => addSection(unit.id)} label="Add Section"/>
-            </div>
-            <ul id={"section_container_"+unit.id} className="ml-8">
-                    {unit.sections.map(section => <Section section={section} />)}
-            </ul>
+            <div id={"unit_"+unit.id} className={"unit_unit " + styling.unitContainer}>
+                <Input styling={styling.unitTitle} label="Unit Title" name="unit_title" value={unit.title} />
+                <div className="flex justify-end gap-3 py-3 border-b">
+                    <FullBtn styling={styling.btnDeleteUnit} onclick={() => deleteUnit(unit.id)} label="Delete Unit"/>
+                    <FullBtn styling={styling.btnAddSection} onclick={() => addSection(unit.id)} label="Add Section"/>
+                </div>
+                <ul id={"section_container_"+unit.id} className="ml-8">
+                        {unit.sections.map(section => <Section section={section} />)}
+                </ul>
             </div>
         )
     }
@@ -120,12 +119,12 @@ export function ClassMetaEdit({classData, toView}: {classData: classType, toView
         return (
             <li
             id={"sect_"+section.id}
-            className="list-decimal my-3 flex justify-between unit_section"
+            className={"unit_section "+styling.sectionContainer}
             >
-                <span>{section.title}</span>
+                <span className={styling.sectionTitle}>{section.title}</span>
                 <div className="flex gap-5">
-                    <Dropdown name="type" options={typeOptions} value={section.type}/>
-                    <FullBtn onclick={() => deleteSection(section.id)} label="Delete Section"/>
+                    <Dropdown styling={styling.sectionType} name="type" options={typeOptions} value={section.type}/>
+                    <FullBtn styling={styling.btnDeleteSection} onclick={() => deleteSection(section.id)} label="Delete Section"/>
                 </div>
             </li>
         )
@@ -133,16 +132,16 @@ export function ClassMetaEdit({classData, toView}: {classData: classType, toView
 
     return (
         <div className="">
-            <Input label="Course Title" name="course_title" value={classData.title} />
+            <Input styling={styling.courseTitle} label="Course Title" name="course_title" value={classData.title} />
             <div className="flex justify-end gap-3 py-3 border-b">
-                <FullBtn onclick={addUnit} label="Add Unit"/>
+                <FullBtn styling={styling.btnAddUnit} onclick={addUnit} label="Add Unit"/>
             </div>
             <div id="unit_container">
                 {classData.units.map((unit: ClassUnit) => <Unit unit={unit} />)}
             </div>
             <div className="flex gap-5 p-5 my-5 justify-end border-t">
-                <FullBtn label="Cancel" onclick={handleCancel}/>
-                <FullBtn label="Confirm" onclick={handleConfirm} />
+                <FullBtn styling={styling.btnCancel} label="Cancel" onclick={handleCancel}/>
+                <FullBtn styling={styling.btnConfirm} label="Confirm" onclick={handleConfirm} />
             </div>
         </div>
     )

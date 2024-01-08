@@ -11,21 +11,21 @@ export interface ClassUnit {
     sections: sectionType []
 }
 
-export type classMenuType = {title: string, color: string, units: ClassUnit[], mode:classModeType, selectSection: (s: sectionType)=>void, setMode: (m: classModeType)=>void};
+export type classMenuType = {title: string, color: string, styling: any, units: ClassUnit[], mode:classModeType, selectSection: (s: sectionType)=>void, setMode: (m: classModeType)=>void};
 
-export function ClassMenu ({title, color, units, mode, selectSection, setMode}: classMenuType) {
+export function ClassMenu ({title, color, styling, units, mode, selectSection, setMode}: classMenuType) {
     return (
-        <aside className="border-r border-gray-300 min-h-screen max-w-80">
-            <div className="font-thin text-lg uppercase">
+        <aside className={styling.container}>
+            <div className={styling.classTitle}>
                 {title}
             </div>
             <hr className="border-b border-0.5 my-5 mr-5" style={{borderColor: color}}/>
             {mode==='meta-edit' && (
             <div className="flex gap-3 px-3">
-                <FullBtn onclick={()=>setMode('view')} label="Cancel and Go Back"/>
+                <FullBtn styling={styling.btnBack} onclick={()=>setMode('view')} label="Cancel and Go Back"/>
             </div>)}
             {mode==='view' &&
-            <FullBtn onclick={()=>setMode('meta-edit')} label="Edit Meta"/>
+            <FullBtn styling={styling.btnEditMeta} onclick={()=>setMode('meta-edit')} label="Edit Meta"/>
             }
             {mode!=='meta-edit' &&
             <ul
@@ -34,12 +34,12 @@ export function ClassMenu ({title, color, units, mode, selectSection, setMode}: 
                 {units.map(unit => (
                     <details>
                     <summary
-                        className="mt-5 cursor-pointer text-lg font-light"
+                        className={styling.unitTitle}
                     >{unit.title}</summary>
                     <ul className="ml-8">
                         {unit.sections.map(section => (
                             <li
-                            className="list-decimal my-3 cursor-pointer"
+                            className={styling.sectionTitle}
                             onClick={() => selectSection(section)}
                             >{section.title}</li>
                         ))

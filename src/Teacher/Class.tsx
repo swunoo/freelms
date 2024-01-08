@@ -7,12 +7,12 @@ import { ClassMetaEdit } from "../Common/Classroom/MetaEdit";
 import { ClassData } from "../Data";
 import Layout from "./_Layout";
 import Error from "../Error";
+import { classStyle as style } from "./style";
 
 export default function Class(){
 
     const {id} = useParams();
     const classObj = new ClassData()
-
 
     return (
         <Layout active="">
@@ -39,6 +39,7 @@ function Content ({classId, classObj}: {classId: string, classObj: any}) {
             <ClassMenu 
                 title={classData.title}
                 color={classData.color}
+                styling={style.menu}
                 units={classData.units}
                 selectSection={setSection}
                 mode={mode}
@@ -52,11 +53,11 @@ function Content ({classId, classObj}: {classId: string, classObj: any}) {
             {(()=>{
                 switch(mode){
                     case 'view':
-                        return <SectionContentDisplay section={section} toEdit={()=>setMode('edit')} />
+                        return <SectionContentDisplay section={section} styling={style.contentDisplay} toEdit={()=>setMode('edit')} />
                     case 'edit':
-                        return <SectionContentEdit section={section} toView={()=>setMode('view')} />
+                        return <SectionContentEdit section={section} styling={style.contentEdit} toView={()=>setMode('view')} />
                     case 'meta-edit':
-                        return <ClassMetaEdit classData={classData} toView={()=>setMode('view')} />
+                        return <ClassMetaEdit classData={classData} styling={style.metaEdit} toView={()=>setMode('view')} />
             }})()}
             </main>
         </div>

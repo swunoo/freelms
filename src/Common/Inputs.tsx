@@ -48,26 +48,26 @@ export function SearchInput({name, onInput}: {name: string, onInput: ChangeEvent
     )
 }
 
-export function Input({label, name, value}: {label: string, name: string, value?:string|undefined}){
+export function Input({label, name, value, styling}: {label: string, name: string, value?:string|undefined, styling?: {label: string, input: string}}){
 
     const [inputValue, setInputValue] = useState(value);
 
     return (
-        <label className="grid grid-cols-5 items-center  rounded text-neutral-800 bg-gray-100 border-neutral-300 border">
+        <label className={"grid grid-cols-5 items-center  rounded text-neutral-800 bg-gray-100 border-neutral-300 border " + (styling?styling.label:'')}>
             <p className="w-full text-center">{label}</p>
-            <input name={name} onChange={(e)=>setInputValue(e.target.value)} value={inputValue} type="text" className="w-full py-2 pl-3 text-sm focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400 col-start-2 col-end-6" />
+            <input name={name} onChange={(e)=>setInputValue(e.target.value)} value={inputValue} type="text" className={"w-full py-2 pl-3 text-sm focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400 col-start-2 col-end-6 " + (styling?styling.input:'')} />
         </label>
     )
 }
 
-export function Dropdown({label, name, options, value}: {label?:string, value?:string, name:string, options:{value: string, text: string}[]}){
+export function Dropdown({label, name, options, value, styling}: {label?:string, value?:string, name:string, options:{value: string, text: string}[], styling?: string}){
 
     const [selectValue, setSelectValue] = useState(value);
 
     return (
         <label className="flex gap-3 items-center">
             {label??""}
-            <select name={name} value={selectValue} onChange={e => setSelectValue(e.target.value)} className="block w-40 h-10 rounded-lg border p-2 text-sm focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400">
+            <select name={name} value={selectValue} onChange={e => setSelectValue(e.target.value)} className={"block w-40 h-10 rounded-lg border p-2 text-sm focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400 " + (styling??"")}>
                 {options.map(o => <option value={o.value}>{o.text}</option>)}
             </select>
         </label>
