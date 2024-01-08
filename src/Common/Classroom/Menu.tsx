@@ -20,15 +20,11 @@ export function ClassMenu ({title, color, styling, units, mode, selectSection, s
                 {title}
             </div>
             <hr className="border-b border-0.5 my-5 mr-5" style={{borderColor: color}}/>
-            {mode==='meta-edit' && (
-            <div className="flex gap-3 px-3">
-                <FullBtn styling={styling.btnBack} onclick={()=>setMode('view')} label="Cancel and Go Back"/>
-            </div>)}
             {mode==='view' &&
             <FullBtn styling={styling.btnEditMeta} onclick={()=>setMode('meta-edit')} label="Edit Meta"/>
             }
-            {mode!=='meta-edit' &&
-            <ul
+            {mode==='view'
+            ? <ul
                 className="text-base"
             >
                 {units.map(unit => (
@@ -47,7 +43,11 @@ export function ClassMenu ({title, color, styling, units, mode, selectSection, s
                     </ul>
                     </details>
                 ))}
-            </ul>}
+            </ul>
+            : <div className="flex gap-3 px-3">
+                <FullBtn styling={styling.btnBack} onclick={()=>setMode('view')} label="Cancel and Go Back"/>
+            </div>
+            }
         </aside>
     )
 }

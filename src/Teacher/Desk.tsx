@@ -65,8 +65,8 @@ function Content(){
     }
 
     return (
-        <div className="p-3 md:px-14 m-auto mb-10">
-            <header className={"md:mt-20 my-5 pb-5 " + style['header']}>
+        <div className={"p-3 md:px-14 m-auto mb-10 h-full " + style['container']}>
+            <header className={style['header']}>
                 Welcome back, Anon!
             </header>
             <SearchBar
@@ -93,6 +93,7 @@ function Content(){
                             <div className="max-w-64">
                             <Card
                             isHor={false}
+                            styling={style['card']}
                             link={parent+c.id}
                             img={c.img}
                             content={

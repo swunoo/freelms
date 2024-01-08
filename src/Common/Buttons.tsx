@@ -1,4 +1,4 @@
-const css_button = "flex content-center items-center gap-1 md:gap-3 py-2 md:px-5 px-3 transition rounded-xl hover:bg-neutral-200 bg-neutral-100 h-fit w-fit "
+const css_button = "flex content-center items-center gap-1 md:gap-3 py-2 md:px-5 px-3 transition hover:brightness-110 h-fit w-fit "
 
 const css_icon = "w-5 md:w-6"
 

@@ -23,12 +23,12 @@ export class UserData {
             
         } else {
             this.userList = [
-                { id: '123', alias: 'jean doe', gender: 'male', class: 'biology' },
-                { id: '343', alias: 'amelia black', gender: 'female', class: 'japanese' },
-                { id: '453454', alias: 'yamada taro', gender: 'male', class: 'maths' },
-                { id: '34534', alias: 'john doe', gender: 'female', class: 'english' },
-                { id: '54345', alias: 'dupont doe', gender: 'male', class: 'biology' },
-                { id: '55434', alias: 'john dupont', gender: 'female', class: 'chemistry' },
+                { id: '123', profilePic: profile_pic, alias: 'jean doe', gender: 'male', class: 'biology' },
+                { id: '343', profilePic: profile_pic, alias: 'amelia black', gender: 'female', class: 'japanese' },
+                { id: '453454', profilePic: profile_pic, alias: 'yamada taro', gender: 'male', class: 'maths' },
+                { id: '34534', profilePic: profile_pic, alias: 'john doe', gender: 'female', class: 'english' },
+                { id: '54345', profilePic: profile_pic, alias: 'dupont doe', gender: 'male', class: 'biology' },
+                { id: '55434', profilePic: profile_pic, alias: 'john dupont', gender: 'female', class: 'chemistry' },
             ];
             localStorage.setItem('userList', JSON.stringify(this.userList));
         }
