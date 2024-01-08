@@ -1,3 +1,3 @@
 # freelms
 
-TODO: modal, calendar, searchBar.
+TODO: Styling.

@@ -4,7 +4,7 @@ interface dropdown {
     label: string,
     name: string,
     options: {value: string, text:string}[],
-    handleDropdown: EventHandler<ChangeEvent>
+    handleDropdown: (s: string)=>void
 }
 type searchBarType = { searchName?: string|undefined, handleSearch?: EventHandler<ChangeEvent>, dropdowns?: dropdown[]|undefined }
 
@@ -17,18 +17,10 @@ export default function SearchBar({searchName, handleSearch, dropdowns}: searchB
                 <SearchInput name={searchName} onInput={handleSearch || (e=>{})}/>}
 
             {   dropdowns &&
-                dropdowns.map(d => {
-                    return (
-                        <div className="relative block ml-5">
-                            <label className="flex gap-3 items-center">
-                                {d.label}
-                                <select onChange={d.handleDropdown} name={d.name} className="block w-40 h-10 rounded-lg border p-2 text-sm focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400">
-                                    {d.options.map(o => <option value={o.value}>{o.text}</option>)}
-                                </select>
-                            </label>
-                        </div>
-                    )
-                })
+                dropdowns.map(d => (
+                    <Dropdown label={d.label} name={d.name} options={d.options} handler={d.handleDropdown} />    
+                )
+                )
             }
         </div>
     )
@@ -53,21 +45,27 @@ export function Input({label, name, value, styling}: {label: string, name: strin
     const [inputValue, setInputValue] = useState(value);
 
     return (
-        <label className={"grid grid-cols-5 items-center  rounded text-neutral-800 bg-gray-100 border-neutral-300 border " + (styling?styling.label:'')}>
+        <label className={"grid grid-cols-5 items-center rounded " + (styling?styling.label:'')}>
             <p className="w-full text-center">{label}</p>
-            <input name={name} onChange={(e)=>setInputValue(e.target.value)} value={inputValue} type="text" className={"w-full py-2 pl-3 text-sm focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400 col-start-2 col-end-6 " + (styling?styling.input:'')} />
+            <input name={name} onChange={(e)=>setInputValue(e.target.value)} value={inputValue} type="text" className={"w-full py-2 pl-3 col-start-2 col-end-6 " + (styling?styling.input:'')} />
         </label>
     )
 }
 
-export function Dropdown({label, name, options, value, styling}: {label?:string, value?:string, name:string, options:{value: string, text: string}[], styling?: string}){
+export function Dropdown({label, name, options, value, styling, handler}: {label?:string, value?:string, name:string, options:{value: string, text: string}[], styling?: string, handler?: (s: string)=>void}){
 
     const [selectValue, setSelectValue] = useState(value);
+
+    const onDropdownChange = (e: any) => {
+        const value = e.target.value;
+        setSelectValue(value);
+        if(handler) handler(value);
+    }
 
     return (
         <label className="flex gap-3 items-center">
             {label??""}
-            <select name={name} value={selectValue} onChange={e => setSelectValue(e.target.value)} className={"block w-40 h-10 rounded-lg border p-2 text-sm focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400 " + (styling??"")}>
+            <select name={name} value={selectValue} onChange={onDropdownChange} className={"block w-40 h-10 rounded-lg border p-2 text-sm focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400 bg-neutral-100 " + (styling??"")}>
                 {options.map(o => <option value={o.value}>{o.text}</option>)}
             </select>
         </label>

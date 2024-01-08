@@ -40,6 +40,11 @@ function Content(){
         })
         setClasses(newClasses);
 
+        console.log(searcher);
+        console.log(newClasses);
+        
+        
+
     }, [searcher]);
 
     const searchHandler = (e: ChangeEvent) => {
@@ -54,19 +59,23 @@ function Content(){
         }
     }
 
-    const dropdownHandler = (e: ChangeEvent) => {
-        const value = (e.target as HTMLInputElement).value.toLowerCase();
+    const dropdownHandler = (value: string) => {
         
         let status = null;
         if(value === 'inprogress') status = false;
         else if(value === 'completed') status = true;
 
+        console.log('handling');
+        console.log(value);
+        
+        
+
         setSearcher({...searcher, completion: status})
     }
 
     return (
-        <div className="p-3 md:px-14 m-auto mb-10">
-            <header className={"md:mt-20 my-5 pb-5 " + style['header']}>
+        <div className={"p-3 md:px-14 m-auto mb-10 h-full " + style['container']}>
+            <header className={style['header']}>
                 Welcome back, Anon!
             </header>
             <SearchBar
@@ -93,6 +102,7 @@ function Content(){
                             <div className="max-w-64">
                             <Card
                             isHor={false}
+                            styling={style['card']}
                             link={parent+c.id}
                             img={c.img}
                             content={

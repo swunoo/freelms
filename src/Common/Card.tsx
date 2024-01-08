@@ -2,14 +2,14 @@ import { MouseEventHandler, ReactNode } from "react"
 import { FullBtn } from "./Buttons";
 
 type btnData = {onclick: MouseEventHandler<HTMLButtonElement>|undefined, text: string, color: string}
-type cardProps = {isHor: boolean, link: string, img: string|null, content:ReactNode, btns: btnData[]}
+type cardProps = {isHor: boolean, styling:string, link: string, img: string|null, content:ReactNode, btns: btnData[]}
 
 
 export default function Card(props: cardProps) {
     return (
         <div className={
             (!props.isHor?"flex-col max-w-72 ":"")
-            + "w-full flex rounded-lg bg-slate-100 text-left overflow-hidden cursor-pointer"}
+            + props.styling}
             onClick={() => {
                 if(props.link){
                     location.href=props.link;
@@ -25,7 +25,7 @@ export default function Card(props: cardProps) {
             {
             props.btns.map(btn => {
                 return(
-                    <FullBtn label={btn.text} color={btn.color} icon={undefined} />
+                    <FullBtn label={btn.text} icon={undefined} />
                 )
             })}
 

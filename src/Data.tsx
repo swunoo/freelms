@@ -23,12 +23,12 @@ export class UserData {
             
         } else {
             this.userList = [
-                { id: '123', alias: 'jean doe', gender: 'male', class: 'biology' },
-                { id: '343', alias: 'amelia black', gender: 'female', class: 'japanese' },
-                { id: '453454', alias: 'yamada taro', gender: 'male', class: 'maths' },
-                { id: '34534', alias: 'john doe', gender: 'female', class: 'english' },
-                { id: '54345', alias: 'dupont doe', gender: 'male', class: 'biology' },
-                { id: '55434', alias: 'john dupont', gender: 'female', class: 'chemistry' },
+                { id: '123', profilePic: profile_pic, alias: 'jean doe', gender: 'male', class: 'biology' },
+                { id: '343', profilePic: profile_pic, alias: 'amelia black', gender: 'female', class: 'japanese' },
+                { id: '453454', profilePic: profile_pic, alias: 'yamada taro', gender: 'male', class: 'maths' },
+                { id: '34534', profilePic: profile_pic, alias: 'john doe', gender: 'female', class: 'english' },
+                { id: '54345', profilePic: profile_pic, alias: 'dupont doe', gender: 'male', class: 'biology' },
+                { id: '55434', profilePic: profile_pic, alias: 'john dupont', gender: 'female', class: 'chemistry' },
             ];
             localStorage.setItem('userList', JSON.stringify(this.userList));
         }
@@ -59,7 +59,7 @@ export class ClassData {
                     code: "CS 2401-01",
                     title: "Software Engineering 1",
                     img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
-                    color: "#153131",
+                    color: "#0F0326",
                     days: ["mon", "tue", "wed"],
                     startTime: 15, duration: 1,
                     isCompleted: true,
@@ -145,7 +145,7 @@ export class ClassData {
                     code: "CS 2401-01",
                     title: "Software Engineering 1",
                     img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
-                    color: "#6A7FDB",
+                    color: "#9B2915",
                     days: ["mon", "tue", "wed"],
                     startTime: 15, duration: 1,
                     isCompleted: false,
@@ -231,7 +231,7 @@ export class ClassData {
                     code: "CS 2401-01",
                     title: "Software Engineering 1",
                     img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
-                    color: "#45CB85",
+                    color: "#2E2F2F",
                     days: ["mon", "tue", "wed"],
                     startTime: 15, duration: 1,
                     isCompleted: true,
@@ -513,21 +513,21 @@ export class LiveData {
                     id: '123',
                     code: "CS 2401-01",
                     name: "Software Engineering 1",
-                    color: "#6A7FDB",
+                    color: "#0F0326",
                     startTime: 15, duration: 1
                 },
                 {
                     id: '123',
                     code: "CS 2401-01",
                     name: "Software Engineering 1",
-                    color: "#57E2E5",
+                    color: "#9B2915",
                     startTime: 15, duration: 1
                 },
                 {
                     id: '123',
                     code: "CS 2401-01",
                     name: "Software Engineering 1",
-                    color: "#45CB85",
+                    color: "#284B63",
                     startTime: 15, duration: 1
                 },
             ]

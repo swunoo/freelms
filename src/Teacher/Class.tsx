@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { SectionContentDisplay } from "../Common/Classroom/ContentDisplay";
 import { SectionContentEdit } from "../Common/Classroom/ContentEdit";
-import { ClassMenu, classType, sectionType } from "../Common/Classroom/Menu";
+import { ClassMenu, sectionType } from "../Common/Classroom/Menu";
 import { ClassMetaEdit } from "../Common/Classroom/MetaEdit";
 import { ClassData } from "../Data";
 import Layout from "./_Layout";
@@ -13,9 +13,10 @@ export default function Class(){
 
     const {id} = useParams();
     const classObj = new ClassData()
+    const code = id ? classObj.getClass(id)['code'] : ''
 
     return (
-        <Layout active="">
+        <Layout active={code}>
             {id ? <Content classId={id} classObj={classObj}/> : <Error/>}
         </Layout>
     )
@@ -31,11 +32,7 @@ function Content ({classId, classObj}: {classId: string, classObj: any}) {
     const [mode, setMode] = useState<classModeType>('view')
 
     return (
-        <div className="
-            md:grid grid-cols-4 gap-8
-            p-3
-            md:p-5
-        ">
+        <div className={"md:grid grid-cols-4 gap-8 p-3 md:p-5 " + style.container}>
             <ClassMenu 
                 title={classData.title}
                 color={classData.color}
