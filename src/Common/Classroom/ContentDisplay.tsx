@@ -9,7 +9,7 @@ const scoreTag = (t: string) => {
     return tag;
 }
 
-export function SectionContentDisplay({section, toEdit}: {section: sectionType, toEdit: ()=>void}){
+export function SectionContentDisplay({section, styling, toEdit}: {section: sectionType, styling:any, toEdit: ()=>void}){
 
     const [score, setScore] = useState('')
 
@@ -56,9 +56,9 @@ export function SectionContentDisplay({section, toEdit}: {section: sectionType, 
 
     return(
         <>
-        <h3 className="text-bold text-3xl mb-10">{section.title}</h3>
+        <h3 className={styling.sectionTitle}>{section.title}</h3>
 
-        <FullBtn onclick={()=>toEdit()} label="Edit Section Content"/>
+        <FullBtn styling={styling.btnEdit} onclick={()=>toEdit()} label="Edit Section Content"/>
 
         {section.type === 'quiz'
 
@@ -68,26 +68,30 @@ export function SectionContentDisplay({section, toEdit}: {section: sectionType, 
         >
             {section.quizzes.map((q: quizType) => (
                 <li
-                    className="text-base my-5 py-3 border-b border-gray-300 list-decimal"
+                    className={styling.quizContainer}
                 >
                     <p>{q.question}</p>
                     {q.answers.map((ans: string, i: number) => (
                         <label className="block my-3">
-                            <input type="radio" name={q.id} value={i}/>
+                            <input className={styling.quizInput} type="radio" name={q.id} value={i}/>
                             <span className="ml-5 cursor-pointer">{ans}</span>
                         </label>
                     ))}
                 </li>
             ))}
 
-            <div className="flex gap-5 items-center justify-between">
-                <span className="font-medium">{score}</span>
-                <FullBtn label={score ? "Retry" : "Check Answers"} color="#45EE85"/>
+            <div className={styling.scoreContainer}>
+                <span className={styling.scoreText}>{score}</span>
+                {score
+                ? <FullBtn styling={styling.btnRetry} label="Retry"/>
+                : <FullBtn styling={styling.btnScore} label="Check Answers"/>
+                }
+               
             </div>
         </form>
 
         : <div
-            className="my-10"
+            className={styling.lectureContainer}
             dangerouslySetInnerHTML={{ __html: section.content }}
         ></div>}
         </>

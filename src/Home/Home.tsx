@@ -15,7 +15,7 @@ interface ThemeContextProps {
 export const ThemeContext = createContext<ThemeContextProps>({theme: 'simple_light', setTheme:()=>{}});
 
 function Home() {
-    const [theme, setTheme] = useState<styleTypes>('neubrutalist');
+    const [theme, setTheme] = useState<styleTypes>('simple_dark');
 
     return (
         <ThemeContext.Provider value = {{theme, setTheme}}>

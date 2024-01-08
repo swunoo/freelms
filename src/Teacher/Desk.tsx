@@ -4,6 +4,7 @@ import SearchBar from "../Common/Inputs";
 import { hrsToTimeStr } from "../Common/Utils";
 import { ClassData } from "../Data";
 import Layout from "./_Layout";
+import { deskStyle as style } from "./style";
 
 export default function Desk(){
 
@@ -65,7 +66,7 @@ function Content(){
 
     return (
         <div className="p-3 md:px-14 m-auto mb-10">
-            <header className="text-5xl font-thin md:mt-20 my-5 border-b pb-5">
+            <header className={"md:mt-20 my-5 pb-5 " + style['header']}>
                 Welcome back, Anon!
             </header>
             <SearchBar
@@ -96,12 +97,12 @@ function Content(){
                             img={c.img}
                             content={
                                 <>
-                                    <h3 className="text-lg font-bold w-full">
+                                    <h3 className={style['class_title']}>
                                         {c.code}<br/>{c.title}
                                     </h3>
                                     <hr className="my-3 border-2" style={{borderColor: c.color}} />
-                                    <p className="uppercase text-xs">
-                                        <span className="capitalize">{days + " "}</span>
+                                    <p className={style['class_schedule']}>
+                                        <span>{days + " "}</span>
                                         <span>{startTime} - {endTime}</span>
                                     </p>
                                 </>

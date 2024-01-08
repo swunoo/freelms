@@ -10,8 +10,15 @@ import notiIcon from "../assets/images/icons/noti_blue.png";
 
 export default Navbar;
 
+const style = {
+    nav_container: "text-base shadow-sm bg-slate-100",
+    nav_link: "",
+    nav_tab: ""
+}
+
 function Navbar({active, setSideBarContent}: {active: string, setSideBarContent: (r: ReactNode)=>void}){
 
+    const brand = "freelms"
     const liveSessionObj = new LiveData();
     const chatObj = new ChatData();
     const notiObj = new NotiData();
@@ -51,17 +58,17 @@ function Navbar({active, setSideBarContent}: {active: string, setSideBarContent:
 
     return (
         <div
-            className="flex justify-between items-center py-2 px-5 md:px-16 text-base sticky top-0 w-full shadow-sm bg-slate-100 z-20"
+            className={"flex justify-between items-center py-2 px-5 md:px-16 sticky top-0 w-full z-20 " + style['nav_container']}
         >
-            <p>freeLMS</p>
+            <p>{brand}</p>
             <div className="flex md:gap-7 gap-3 items-center relative">
-                <a href="/teacher/desk" className=   {active==='desk'?'font-bold':''}>Desk</a>
-                <a href="/teacher/members" className={active==='members'?'font-bold':''}>Members</a>
+                <a href="/teacher/desk" className={(active==='desk'?'font-bold':'')+style['nav_link']}>Desk</a>
+                <a href="/teacher/members" className={(active==='members'?'font-bold':'')+style['nav_link']}>Members</a>
 
                 <div className="md:ml-7 flex md:gap-7 h-fit">
-                    <IconBtn icon={calendarIcon} onclick={openCalendar}/>
-                    <IconBtn icon={chatIcon} onclick={openChats}/>
-                    <IconBtn icon={notiIcon} onclick={openNotis}/>
+                    <IconBtn styling={style['nav_tab']} icon={calendarIcon} onclick={openCalendar}/>
+                    <IconBtn styling={style['nav_tab']} icon={chatIcon} onclick={openChats}/>
+                    <IconBtn styling={style['nav_tab']} icon={notiIcon} onclick={openNotis}/>
                 </div>
             </div>
         </div>

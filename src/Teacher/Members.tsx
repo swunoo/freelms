@@ -72,7 +72,7 @@ function Table() {
     const keys = Object.keys(users[0])
 
     return (
-        <div className="overflow-x-auto bg-white  overflow-y-scroll">
+        <div className="overflow-x-auto bg-white overflow-y-scroll">
 
             <BaseTable
                 thead={
