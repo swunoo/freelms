@@ -70,10 +70,10 @@ function Navbar({active, setSideBarContent}: {active: string, setSideBarContent:
             <p>{brand}</p>
             <div className="flex md:gap-7 gap-3 items-center relative">
                 <a href="/teacher/desk" className={(active==='desk'?navStyle['active_link']:'')+navStyle['nav_link']}>Desk</a>
-                <a href="/teacher/members" className={(active==='members'?navStyle['active_link']:'')+navStyle['nav_link']}>Members</a>
+                {/* <a href="/teacher/members" className={(active==='members'?navStyle['active_link']:'')+navStyle['nav_link']}>Members</a> */}
 
                 {active !== "desk" && active !== "members" &&
-                    <p className={navStyle['active_link'] + navStyle['nav_link'] + ' hidden md:block'}>{active}</p>
+                    <p className={navStyle['active_link'] + navStyle['nav_link']}>{active}</p>
                 }
 
                 <div className="md:ml-7 flex md:gap-7 h-fit">
