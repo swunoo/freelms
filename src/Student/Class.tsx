@@ -26,8 +26,10 @@ export function Class(){
 function Content ({classId, classObj}: {classId: string, classObj: any}) {
 
     const classData = classObj.getClass(classId);
+
+    const [units, setUnits] = useState(classData.units);
     
-    const [section, setSection] = useState<sectionType>(classData.units[0].sections[0]);
+    const [section, setSection] = useState<sectionType>(units[0].sections[0]);
 
     const [prevNext, setPrevNext] = useState({prev: undefined, next: undefined});
 
@@ -40,6 +42,7 @@ function Content ({classId, classObj}: {classId: string, classObj: any}) {
     const toggleCompletion = (section: sectionType) => {
         const newSection = classObj.toggleSectionCompletion(section);
         setSection(newSection);
+        setUnits(classObj.getClass(classId).units);
     }
 
     return (
@@ -48,9 +51,10 @@ function Content ({classId, classObj}: {classId: string, classObj: any}) {
                 title={classData.title}
                 color={classData.color}
                 styling={style.menu}
-                units={classData.units}
+                units={units}
                 selectSection={setSection}
                 mode={'view'}
+                progress={classData.progress}
             />
             
             <main className="

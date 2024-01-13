@@ -12,10 +12,11 @@ export interface ClassUnit {
     sections: sectionType []
 }
 
-export type classMenuType = {title: string, color: string, styling: any, units: ClassUnit[], mode:classModeType, selectSection: (s: sectionType)=>void, setMode?: (m: classModeType)=>void};
+export type classMenuType = {title: string, color: string, styling: any, units: ClassUnit[], mode:classModeType, progress?:string, selectSection: (s: sectionType)=>void, setMode?: (m: classModeType)=>void};
 
-export function ClassMenu ({title, color, styling, units, mode, selectSection, setMode}: classMenuType) {
+export function ClassMenu ({title, color, styling, units, mode, progress, selectSection, setMode}: classMenuType) {
 
+    const isStudent = (!setMode);
     if(!setMode) setMode = defaultFunc;
 
     return (
@@ -24,8 +25,13 @@ export function ClassMenu ({title, color, styling, units, mode, selectSection, s
             <div className={styling.classTitle}>
                 {title}
             </div>
-            <hr className="border-b border-0.5 my-5 mr-5" style={{borderColor: color}}/>
-            {(mode==='view' && setMode !== defaultFunc) &&
+            {isStudent
+            ? <div className="bg-parchment my-3 rounded-xl w-5/6">
+                <div className="h-1 rounded-xl  bottom-0 left-0" style={{backgroundColor: color, width: progress}} ></div>
+            </div>
+            : <hr className="border-b border-0.5 my-5 mr-5" style={{borderColor: color}}/>
+            }
+            {(mode==='view' && !isStudent) &&
                 <FullBtn styling={styling.btnEditMeta} onclick={()=>setMode('meta-edit')} label="Edit Meta"/>
             }
             {mode==='view'
@@ -40,7 +46,7 @@ export function ClassMenu ({title, color, styling, units, mode, selectSection, s
                     <ul className="ml-8">
                         {unit.sections.map(section => (
                             <li
-                            className={styling.sectionTitle}
+                            className={styling.sectionTitle + (section.isCompleted?styling.completedSectionTitle:'')}
                             onClick={() => selectSection(section)}
                             >{section.title}</li>
                         ))

@@ -3,7 +3,6 @@ import profile_pic from "./assets/images/profile.png";
 
 const MUST_REFRESH = true;
 
-
 function readLocalStorage(key: string){
     const data = localStorage.getItem(key);
     if(!MUST_REFRESH && data){
@@ -79,7 +78,7 @@ export class ClassData {
                                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a></p><p><strong>BOLD</strong>LoremIpsum <a>Link</a></p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores praesentium non qui laborum fugiat, voluptatibus quam labore. Ipsam voluptas sit debitis alias ex a voluptatibus libero soluta quo porro ratione assumenda aliquid mollitia modi atque, eaque incidunt molestiae consequatur nulla, animi obcaecati eligendi tempora. Repudiandae deleniti eum omnis incidunt atque velit culpa recusandae quas quis, unde dolorem sit rerum perferendis est quia veritatis molestiae corrupti molestias commodi. Ea, nemo laudantium sequi optio asperiores cumque natus inventore, veniam tempora consequatur illum, dolore nihil corporis quam id soluta doloremque voluptatum reprehenderit fugiat! Molestiae corrupti nobis repellat necessitatibus quod, dignissimos maxime nam inventore. <a>Link</a></p>'
                                 },
                                 {
-                                    id: '96124142',
+                                    id: '96124146',
                                     type: 'quiz',
                                     title: 'Quiz',
                                     quizzes: [
@@ -147,7 +146,7 @@ export class ClassData {
                     ]
                 },
                 {
-                    id: '123',
+                    id: '124',
                     code: "CS 2401-01",
                     title: "Software Engineering 1",
                     img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
@@ -163,13 +162,13 @@ export class ClassData {
                             sections: [
                                 { 
                                     isCompleted: false,
-                                    id: '96124140',
+                                    id: '96124141',
                                     type: 'lecture',
                                     title: 'Discussion',
                                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a></p><p><strong>BOLD</strong>LoremIpsum <a>Link</a></p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores praesentium non qui laborum fugiat, voluptatibus quam labore. Ipsam voluptas sit debitis alias ex a voluptatibus libero soluta quo porro ratione assumenda aliquid mollitia modi atque, eaque incidunt molestiae consequatur nulla, animi obcaecati eligendi tempora. Repudiandae deleniti eum omnis incidunt atque velit culpa recusandae quas quis, unde dolorem sit rerum perferendis est quia veritatis molestiae corrupti molestias commodi. Ea, nemo laudantium sequi optio asperiores cumque natus inventore, veniam tempora consequatur illum, dolore nihil corporis quam id soluta doloremque voluptatum reprehenderit fugiat! Molestiae corrupti nobis repellat necessitatibus quod, dignissimos maxime nam inventore. <a>Link</a></p>'
                                 },
                                 {
-                                    id: '96124142',
+                                    id: '96124143',
                                     type: 'quiz',
                                     title: 'Quiz',
                                     quizzes: [
@@ -227,7 +226,7 @@ export class ClassData {
                                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a></p>'
                                 },
                                 {
-                                    id: '96124103',
+                                    id: '96124123',
                                     type: 'lecture',
                                     title: 'Discussion',
                                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a></p>'
@@ -237,7 +236,7 @@ export class ClassData {
                     ]
                 },
                 {
-                    id: '123',
+                    id: '125',
                     code: "CS 2401-01",
                     title: "Software Engineering 1",
                     img: "https://my.uopeople.edu/pluginfile.php/1808190/course/overviewfiles/CS2041.jpg",
@@ -253,13 +252,13 @@ export class ClassData {
                             sections: [
                                 { 
                                     isCompleted: false,
-                                    id: '96124140',
+                                    id: '96124144',
                                     type: 'lecture',
                                     title: 'Discussion',
                                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a></p><p><strong>BOLD</strong>LoremIpsum <a>Link</a></p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores praesentium non qui laborum fugiat, voluptatibus quam labore. Ipsam voluptas sit debitis alias ex a voluptatibus libero soluta quo porro ratione assumenda aliquid mollitia modi atque, eaque incidunt molestiae consequatur nulla, animi obcaecati eligendi tempora. Repudiandae deleniti eum omnis incidunt atque velit culpa recusandae quas quis, unde dolorem sit rerum perferendis est quia veritatis molestiae corrupti molestias commodi. Ea, nemo laudantium sequi optio asperiores cumque natus inventore, veniam tempora consequatur illum, dolore nihil corporis quam id soluta doloremque voluptatum reprehenderit fugiat! Molestiae corrupti nobis repellat necessitatibus quod, dignissimos maxime nam inventore. <a>Link</a></p>'
                                 },
                                 {
-                                    id: '96124142',
+                                    id: '96124145',
                                     type: 'quiz',
                                     title: 'Quiz',
                                     quizzes: [
@@ -317,7 +316,7 @@ export class ClassData {
                                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a></p>'
                                 },
                                 {
-                                    id: '96124103',
+                                    id: '96124153',
                                     type: 'lecture',
                                     title: 'Discussion',
                                     content: '<p><strong>BOLD</strong>LoremIpsum <a>Link</a></p>'
