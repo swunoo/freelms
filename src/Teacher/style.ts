@@ -48,8 +48,8 @@ export const deskStyle = {
 export const classStyle = {
     container: "bg-eggshell",
     menu: {
-        container: "border-r border-gray-300 min-h-screen max-w-80",
-        classTitle: "font-thin text-lg uppercase",
+        container: "md:border-r border-b border-gray-300 md:min-h-screen w-full md:max-w-80 mb-10 py-5 md:mb-0 md:py-0",
+        classTitle: "md:font-thin text-lg uppercase",
         unitTitle: "mt-5 cursor-pointer text-lg font-light",
         sectionTitle: "list-decimal my-3 cursor-pointer",
         btnBack: "bg-btn-cancel text-white ",
@@ -76,35 +76,35 @@ export const classStyle = {
         quizTitle: "text-lg",
         quizId: "font-thin mx-5",
         quizQ: {
-            label:"",
-            input: ""
+            label:"block",
+            input: "block"
         },
         quizA: {
-            label: "",
+            label: "md:mt-3",
             input: ""
         },
-        quizCorrectAns: "w-5 cursor-pointer",
+        quizCorrectAns: "w-7 h-7 md:w-5 md:h-5 cursor-pointer",
         btnAddQuiz: "bg-btn-add font-medium text-white ",
         btnDeleteQuiz: "bg-btn-delete text-white ",
         btnAddAns: "bg-btn-add font-medium text-white ",
-        btnDeleteAns: "hover:bg-red-300 text-white ",
+        btnDeleteAns: "hover:bg-red-300 bg-vanilla",
         btnCancel: "bg-btn-cancel text-white ",
         btnConfirm: "bg-btn-confirm font-medium text-white "
     },
     metaEdit: {
-        courseTitle: "",
-        unitContainer: " py-3 px-5 bg-gray-200 shadow my-5",
+        courseTitle: "text-xs md:text-sm",
+        unitContainer: " py-3 px-5 bg-gray-200 shadow my-5 text-xs md:text-sm",
         unitTitle: {
-            label: "",
-            input: ""
+            label: "text-xs md:text-sm",
+            input: "ml-1"
         },
-        sectionContainer: "list-decimal my-3 flex justify-between",
-        sectionTitle: "",
+        sectionContainer: "list-decimal my-3 grid grid-cols-2 md:flex justify-between items-center",
+        sectionTitle: "col-start-1 col-end-3 mt-3 mb-1 text-sm font-semibold",
         sectionType: "",
-        btnAddUnit: "",
-        btnDeleteUnit: "",
-        btnAddSection: "",
-        DeleteSection: "",
+        btnAddUnit: "bg-btn-add text-white",
+        btnDeleteUnit: "bg-btn-delete text-white",
+        btnAddSection: "bg-btn-add text-white",
+        btnDeleteSection: "bg-gray-300",
         btnCancel: "bg-btn-cancel text-white ",
         btnConfirm: "bg-btn-confirm font-medium text-white "
     }

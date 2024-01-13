@@ -45,9 +45,21 @@ export function Input({label, name, value, styling}: {label: string, name: strin
     const [inputValue, setInputValue] = useState(value);
 
     return (
-        <label className={"grid grid-cols-5 items-center rounded " + (styling?styling.label:'')}>
-            <p className="w-full text-center">{label}</p>
+        <label className={"md:grid grid-cols-5 items-center rounded " + (styling?styling.label:'')}>
+            <p className="w-full md:text-center mb-2 md:mb-0">{label}</p>
             <input name={name} onChange={(e)=>setInputValue(e.target.value)} value={inputValue} type="text" className={"w-full py-2 pl-3 col-start-2 col-end-6 " + (styling?styling.input:'')} />
+        </label>
+    )
+}
+
+export function Textarea({label, name, value, styling}: {label: string, name: string, value?:string|undefined, styling?: {label: string, input: string}}){
+
+    const [inputValue, setInputValue] = useState(value);
+
+    return (
+        <label className={"md:grid grid-cols-5 items-start rounded " + (styling?styling.label:'')}>
+            <p className="w-full md:text-center mb-2 md:mb-0">{label}</p>
+            <textarea name={name} onChange={(e)=>setInputValue(e.target.value)} value={inputValue} className={"w-full py-2 pl-3 col-start-2 col-end-6 " + (styling?styling.input:'')} />
         </label>
     )
 }

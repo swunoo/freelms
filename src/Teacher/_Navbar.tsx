@@ -61,7 +61,7 @@ function Navbar({active, setSideBarContent}: {active: string, setSideBarContent:
         setSideBarContent(<NotiBox data={notiData} styling={sideBarStyle['noti']} />);
     }
 
-    useEffect(openCalendar,[])
+    useEffect(() => {if(window.innerWidth > 768) openCalendar()},[]);
 
     return (
         <div
@@ -73,7 +73,7 @@ function Navbar({active, setSideBarContent}: {active: string, setSideBarContent:
                 <a href="/teacher/members" className={(active==='members'?navStyle['active_link']:'')+navStyle['nav_link']}>Members</a>
 
                 {active !== "desk" && active !== "members" &&
-                    <p className={navStyle['active_link'] + navStyle['nav_link']}>{active}</p>
+                    <p className={navStyle['active_link'] + navStyle['nav_link'] + ' hidden md:block'}>{active}</p>
                 }
 
                 <div className="md:ml-7 flex md:gap-7 h-fit">

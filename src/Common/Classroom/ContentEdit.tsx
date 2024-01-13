@@ -4,7 +4,7 @@ import ReactQuill from "react-quill";
 import { ClassData } from "../../Data";
 import deleteIcon from "../../assets/images/icons/delete_black.png";
 import { FullBtn, IconBtn } from "../Buttons";
-import { Input } from "../Inputs";
+import { Input, Textarea } from "../Inputs";
 import { quizType, sectionType } from "./Menu";
 
 export function SectionContentEdit({section, styling, toView}: {section: sectionType, styling:any, toView: ()=>void}){
@@ -83,15 +83,15 @@ export function SectionContentEdit({section, styling, toView}: {section: section
             className={"quiz_data " + styling.quizContainer}
             id={"quiz_"+q.id}
         >
-            <div className="flex gap-5 mb-5 items-center">
+            <div className="flex justify-between md:justify-start gap-5 mb-5 items-center">
                 <h3 className={styling.quizTitle}>Quiz <span className={styling.quizId}>id: {q.id}</span></h3>
                 <FullBtn styling={styling.btnDeleteQuiz} onclick={()=>deleteQuiz(q.id)} label="Delete Quiz"/>
             </div>
-            <div className="grid grid-cols-6">
+            <div className="md:grid grid-cols-6">
                 <div className="mb-3 col-start-1 col-end-6">
-                    <Input styling={styling.quizQ} label="Question" name={q.id + '_q'} value={q.question} />
+                    <Textarea styling={styling.quizQ} label="Question" name={q.id + '_q'} value={q.question} />
                 </div>
-                <div className="flex justify-center">
+                <div className="flex justify-end md:justify-center">
                     <FullBtn styling={styling.btnAddAns} onclick={()=>addAnswer(q.id)} label="Add Answer"/>
                 </div>
             </div>
@@ -103,10 +103,10 @@ export function SectionContentEdit({section, styling, toView}: {section: section
 
     function QuizAns ({id, ans, i}:{id:any, ans:string, i: number}){
         return(
-            <div id={"ans_"+id+"_"+i} className={"grid grid-cols-6 ans_"+id}>
-                <div className="col-start-1 col-end-6">
-                <Input styling={styling.quizA} label={"Answer "+(i+1)} name={id + '_a'+i} value={ans} /></div>
-                <div className="flex justify-evenly">
+            <div id={"ans_"+id+"_"+i} className={"mt-5 mb-2 md:mt-0 md:mb-0 items-center grid grid-cols-6 ans_"+id}>
+                <div className="col-start-1 col-end-7 md:col-end-6">
+                <Textarea styling={styling.quizA} label={"Answer "+(i+1)} name={id + '_a'+i} value={ans} /></div>
+                <div className="flex justify-end gap-5 mt-3 md:justify-evenly items-center col-start-1 md:col-start-6 col-end-7">
                     <IconBtn styling={styling.btnDeleteAns} onclick={()=>deleteAnswer(id, i)} icon={deleteIcon}/>
                     <input className={styling.quizCorrectAns} type="radio" name={id} value={i}/>
                 </div>

@@ -45,7 +45,7 @@ function Content ({classId, classObj}: {classId: string, classObj: any}) {
             <main className="
                 col-start-2
                 col-end-5
-                px-8
+                px-3 md:px-8
             ">
             {(()=>{
                 switch(mode){

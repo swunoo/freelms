@@ -104,7 +104,7 @@ export function ClassMetaEdit({classData, styling, toView}: {classData: classTyp
                     <FullBtn styling={styling.btnDeleteUnit} onclick={() => deleteUnit(unit.id)} label="Delete Unit"/>
                     <FullBtn styling={styling.btnAddSection} onclick={() => addSection(unit.id)} label="Add Section"/>
                 </div>
-                <ul id={"section_container_"+unit.id} className="ml-8">
+                <ul id={"section_container_"+unit.id} className="md:ml-8">
                         {unit.sections.map(section => <Section section={section} />)}
                 </ul>
             </div>
@@ -132,7 +132,7 @@ export function ClassMetaEdit({classData, styling, toView}: {classData: classTyp
 
     return (
         <div className="">
-            <Input styling={styling.courseTitle} label="Course Title" name="course_title" value={classData.title} />
+            <Input styling={styling.courseTitle} label="Course" name="course_title" value={classData.title} />
             <div className="flex justify-end gap-3 py-3 border-b">
                 <FullBtn styling={styling.btnAddUnit} onclick={addUnit} label="Add Unit"/>
             </div>

@@ -1,10 +1,12 @@
 import { ClassUnit, classType, sectionType } from "./Common/Classroom/Menu";
 import profile_pic from "./assets/images/profile.png";
 
+const MUST_REFRESH = true;
+
 
 function readLocalStorage(key: string){
     const data = localStorage.getItem(key);
-    if(data){
+    if(!MUST_REFRESH && data){
         return JSON.parse(data);
     } 
     return undefined;

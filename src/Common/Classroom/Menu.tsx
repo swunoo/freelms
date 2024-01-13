@@ -16,6 +16,7 @@ export type classMenuType = {title: string, color: string, styling: any, units: 
 export function ClassMenu ({title, color, styling, units, mode, selectSection, setMode}: classMenuType) {
     return (
         <aside className={styling.container}>
+
             <div className={styling.classTitle}>
                 {title}
             </div>
@@ -25,7 +26,7 @@ export function ClassMenu ({title, color, styling, units, mode, selectSection, s
             }
             {mode==='view'
             ? <ul
-                className="text-base"
+                className="flex gap-2 overflow-x-scroll md:block text-base"
             >
                 {units.map(unit => (
                     <details>
