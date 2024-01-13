@@ -101,7 +101,9 @@ function Content(){
                                     <h3 className={style['class_title']}>
                                         {c.code}<br/>{c.title}
                                     </h3>
-                                    <hr className="my-3 border-2" style={{borderColor: c.color}} />
+                                    <div className="bg-eggshell my-3 rounded-xl">
+                                            <div className="h-1 rounded-xl  bottom-0 left-0" style={{backgroundColor: c.color, width: c.progress}} ></div>
+                                    </div>
                                     <p className={style['class_schedule']}>
                                         <span>{days + " "}</span>
                                         <span>{startTime} - {endTime}</span>

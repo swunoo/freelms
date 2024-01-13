@@ -64,13 +64,15 @@ export class ClassData {
                     color: "#0F0326",
                     days: ["mon", "tue", "wed"],
                     startTime: 15, duration: 1,
+                    progress: "100%",
                     isCompleted: true,
                     units: [
                         {
                             id: '96124143',
                             title: 'Introduction',
                             sections: [
-                                {
+                                { 
+                                    isCompleted: false,
                                     id: '96124140',
                                     type: 'lecture',
                                     title: 'Discussion',
@@ -109,7 +111,8 @@ export class ClassData {
                             id: '96124167',
                             title: 'Introduction',
                             sections: [
-                                {
+                                { 
+                                    isCompleted: false,
                                     id: '96124198',
                                     type: 'lecture',
                                     title: 'Discussion',
@@ -126,7 +129,8 @@ export class ClassData {
                             id: '96124199',
                             title: 'Introduction',
                             sections: [
-                                {
+                                { 
+                                    isCompleted: false,
                                     id: '96124104',
                                     type: 'lecture',
                                     title: 'Discussion',
@@ -150,13 +154,15 @@ export class ClassData {
                     color: "#9B2915",
                     days: ["mon", "tue", "wed"],
                     startTime: 15, duration: 1,
+                    progress: "10%",
                     isCompleted: false,
                     units: [
                         {
                             id: '96124143',
                             title: 'Introduction',
                             sections: [
-                                {
+                                { 
+                                    isCompleted: false,
                                     id: '96124140',
                                     type: 'lecture',
                                     title: 'Discussion',
@@ -195,7 +201,8 @@ export class ClassData {
                             id: '96124167',
                             title: 'Introduction',
                             sections: [
-                                {
+                                { 
+                                    isCompleted: false,
                                     id: '96124198',
                                     type: 'lecture',
                                     title: 'Discussion',
@@ -212,7 +219,8 @@ export class ClassData {
                             id: '96124199',
                             title: 'Introduction',
                             sections: [
-                                {
+                                { 
+                                    isCompleted: false,
                                     id: '96124104',
                                     type: 'lecture',
                                     title: 'Discussion',
@@ -236,13 +244,15 @@ export class ClassData {
                     color: "#2E2F2F",
                     days: ["mon", "tue", "wed"],
                     startTime: 15, duration: 1,
-                    isCompleted: true,
+                    progress: "70%",
+                    isCompleted: false,
                     units: [
                         {
                             id: '96124143',
                             title: 'Introduction',
                             sections: [
-                                {
+                                { 
+                                    isCompleted: false,
                                     id: '96124140',
                                     type: 'lecture',
                                     title: 'Discussion',
@@ -281,7 +291,8 @@ export class ClassData {
                             id: '96124167',
                             title: 'Introduction',
                             sections: [
-                                {
+                                { 
+                                    isCompleted: false,
                                     id: '96124198',
                                     type: 'lecture',
                                     title: 'Discussion',
@@ -298,7 +309,8 @@ export class ClassData {
                             id: '96124199',
                             title: 'Introduction',
                             sections: [
-                                {
+                                { 
+                                    isCompleted: false,
                                     id: '96124104',
                                     type: 'lecture',
                                     title: 'Discussion',
@@ -328,13 +340,45 @@ export class ClassData {
         return matchingClasses ? matchingClasses[0] : null;
     }
 
+    getPreviousSection(curId: string){
+        for(const clazz of this.classList){
+            for(const unit of clazz.units){
+                for(let i = 0; i<unit.sections.length; i++){
+                    if(unit.sections[i].id === curId){
+                        return (i===0 ? undefined : unit.sections[i-1]);
+                    }
+                }
+            }
+        }
+    }
+
+    getNextSection(curId: string){
+        for(const clazz of this.classList){
+            for(const unit of clazz.units){
+                for(let i = 0; i<unit.sections.length; i++){
+                    if(unit.sections[i].id === curId){
+                        return (i===unit.sections.length-1 ? undefined : unit.sections[i+1]);
+                    }
+                }
+            }
+        }
+    }
+
+    toggleSectionCompletion(section: sectionType){
+
+        const newSection = {...section, isCompleted: !section.isCompleted}
+        this.updateSection(newSection);
+
+        return newSection;
+    }
+
     updateSection(section: sectionType){
         for(const clazz of this.classList){
             for(const unit of clazz.units){
                 for(const curSection of unit.sections){
                     if(curSection.id === section.id){
-                        unit.sections = unit.sections.filter((s: sectionType)=>s.id!==section.id)
-                        unit.sections.push(section);
+                        const index = unit.sections.indexOf(curSection);
+                        unit.sections[index] = section;
                         localStorage.setItem('classList', JSON.stringify(this.classList));
                         return;
                     }
@@ -347,8 +391,8 @@ export class ClassData {
         for(const clazz of this.classList){
             for(const curUnit of clazz.units){
                 if(curUnit.id === unit.id){
-                    clazz.units = clazz.units.filter((u: ClassUnit)=>u.id!==unit.id)
-                    clazz.units.push(unit);
+                    const index = clazz.units.indexOf(curUnit);
+                    clazz.units[index] = unit;
                     localStorage.setItem('classList', JSON.stringify(this.classList));
                     return;
                 }
@@ -359,8 +403,8 @@ export class ClassData {
     updateClass (clazz: classType){
         for(const curClazz of this.classList){
             if(curClazz.id === clazz.id){
-                this.classList = this.classList.filter((c: classType)=>c.id!==clazz.id)
-                this.classList.push(clazz);
+                const index = this.classList.indexOf(curClazz);
+                this.classList[index] = clazz
                 localStorage.setItem('classList', JSON.stringify(this.classList));
                 return;
             }

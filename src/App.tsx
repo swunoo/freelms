@@ -6,8 +6,10 @@ import Dashboard from './Admin/Dashboard';
 import Design from './Admin/Design';
 import AdminMembers from './Admin/Members';
 import TeacherMembers from './Teacher/Members';
-import Desk from './Teacher/Desk';
-import Class from './Teacher/Class';
+import {Desk as TeacherDesk} from './Teacher/Desk';
+import {Class as TeacherClass} from './Teacher/Class';
+import {Desk as StudentDesk} from './Student/Desk';
+import {Class as StudentClass} from './Student/Class';
 import TeacherLogin from './Teacher/TeacherLogin';
 
 function App() {
@@ -23,10 +25,12 @@ function App() {
         <Route path="/admin" element={<Dashboard />} />
 
         <Route path="/teacher/auth" element={<TeacherLogin />} />
-        <Route path="/teacher/desk" element={<Desk />} />
-        <Route path="/teacher/class/:id" element={<Class />} />
+        <Route path="/teacher/desk" element={<TeacherDesk />} />
+        <Route path="/teacher/class/:id" element={<TeacherClass />} />
         <Route path="/teacher/members" element={<TeacherMembers />} />
-        <Route path="/teacher" element={<Desk />} />
+
+        <Route path="/student/desk" element={<StudentDesk />} />
+        <Route path="/student/class/:id" element={<StudentClass />} />
 
         <Route path="*" element={<Error />}/>
       </Routes>

@@ -9,7 +9,7 @@ const scoreTag = (t: string) => {
     return tag;
 }
 
-export function SectionContentDisplay({section, styling, toEdit}: {section: sectionType, styling:any, toEdit: ()=>void}){
+export function SectionContentDisplay({section, styling, toEdit}: {section: sectionType, styling:any, toEdit?: ()=>void}){
 
     const [score, setScore] = useState('')
 
@@ -58,7 +58,7 @@ export function SectionContentDisplay({section, styling, toEdit}: {section: sect
         <>
         <h3 className={styling.sectionTitle}>{section.title}</h3>
 
-        <FullBtn styling={styling.btnEdit} onclick={()=>toEdit()} label="Edit Section Content"/>
+        {toEdit && <FullBtn styling={styling.btnEdit} onclick={toEdit} label="Edit Section Content"/>}
 
         {section.type === 'quiz'
 
@@ -93,7 +93,8 @@ export function SectionContentDisplay({section, styling, toEdit}: {section: sect
         : <div
             className={styling.lectureContainer}
             dangerouslySetInnerHTML={{ __html: section.content }}
-        ></div>}
+        ></div>
+        }
         </>
     )
 }

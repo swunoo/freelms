@@ -1,6 +1,7 @@
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
 import { classModeType } from "../../Teacher/Class";
 import { FullBtn } from "../Buttons";
+import { defaultFunc } from '../Utils';
 
 export type classType = any; //TODO
 export type sectionType = any; //TODO
@@ -11,9 +12,12 @@ export interface ClassUnit {
     sections: sectionType []
 }
 
-export type classMenuType = {title: string, color: string, styling: any, units: ClassUnit[], mode:classModeType, selectSection: (s: sectionType)=>void, setMode: (m: classModeType)=>void};
+export type classMenuType = {title: string, color: string, styling: any, units: ClassUnit[], mode:classModeType, selectSection: (s: sectionType)=>void, setMode?: (m: classModeType)=>void};
 
 export function ClassMenu ({title, color, styling, units, mode, selectSection, setMode}: classMenuType) {
+
+    if(!setMode) setMode = defaultFunc;
+
     return (
         <aside className={styling.container}>
 
@@ -21,8 +25,8 @@ export function ClassMenu ({title, color, styling, units, mode, selectSection, s
                 {title}
             </div>
             <hr className="border-b border-0.5 my-5 mr-5" style={{borderColor: color}}/>
-            {mode==='view' &&
-            <FullBtn styling={styling.btnEditMeta} onclick={()=>setMode('meta-edit')} label="Edit Meta"/>
+            {(mode==='view' && setMode !== defaultFunc) &&
+                <FullBtn styling={styling.btnEditMeta} onclick={()=>setMode('meta-edit')} label="Edit Meta"/>
             }
             {mode==='view'
             ? <ul
