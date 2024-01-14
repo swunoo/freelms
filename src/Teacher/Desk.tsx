@@ -2,7 +2,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import Card from "../Common/Card";
 import SearchBar from "../Common/Inputs";
 import { hrsToTimeStr } from "../Common/Utils";
-import { ClassData } from "../Data";
+import { ClassData } from "../DataAccess";
 import Layout from "./_Layout";
 import { deskStyle as style } from "./style";
 

@@ -1,7 +1,7 @@
 import { ReactNode, useEffect } from "react";
 import { IconBtn } from "../Common/Buttons";
 import { ChatBox, ChatDetails, NotiBox } from "../Common/ChatPanel";
-import { ChatData, NotiData } from "../Data";
+import { ChatData, NotiData } from "../DataAccess";
 import chatIcon from "../assets/images/icons/chat_blue.png";
 import notiIcon from "../assets/images/icons/noti_blue.png";
 

@@ -4,7 +4,7 @@ import { SectionContentDisplay } from "../Common/Classroom/ContentDisplay";
 import { SectionContentEdit } from "../Common/Classroom/ContentEdit";
 import { ClassMenu, sectionType } from "../Common/Classroom/Menu";
 import { ClassMetaEdit } from "../Common/Classroom/MetaEdit";
-import { ClassData } from "../Data";
+import { ClassData } from "../DataAccess";
 import Layout from "./_Layout";
 import Error from "../Error";
 import { classStyle as style } from "./style";

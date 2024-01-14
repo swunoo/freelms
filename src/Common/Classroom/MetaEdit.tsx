@@ -3,7 +3,7 @@ import { FullBtn } from "../Buttons";
 import { Dropdown, Input } from "../Inputs";
 import { ClassUnit, classType, sectionType } from "./Menu";
 import { getInputValue, getSelectValue } from "../Utils";
-import { ClassData } from "../../Data";
+import { ClassData } from "../../DataAccess";
 
 export function ClassMetaEdit({classData, styling, toView}: {classData: classType, styling: any, toView: ()=>void}){
 

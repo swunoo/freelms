@@ -3,7 +3,7 @@ import { IconBtn } from "../Common/Buttons";
 import Calendar from "../Common/Calendar";
 import { ChatBox, ChatDetails, NotiBox } from "../Common/ChatPanel";
 import { LiveSession } from "../Common/Sidebar";
-import { ChatData, LiveData, NotiData, liveSessionType } from "../Data";
+import { ChatData, LiveData, NotiData, liveSessionType } from "../DataAccess";
 import calendarIcon from "../assets/images/icons/calendar_material.png";
 import chatIcon from "../assets/images/icons/chat_material.png";
 import notiIcon from "../assets/images/icons/noti_material.png";

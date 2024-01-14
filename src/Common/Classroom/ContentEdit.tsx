@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ReactDOM from "react-dom";
 import ReactQuill from "react-quill";
-import { ClassData } from "../../Data";
+import { ClassData } from "../../DataAccess";
 import deleteIcon from "../../assets/images/icons/delete_black.png";
 import { FullBtn, IconBtn } from "../Buttons";
 import { Input, Textarea } from "../Inputs";

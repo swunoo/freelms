@@ -4,7 +4,7 @@ import { useState } from "react";
 import { IconBtn } from "../Common/Buttons";
 import Modal from "../Common/Modal";
 import { BaseTable, BaseTableData, BaseTableHeader, BaseTableNav } from "../Common/Table";
-import { UserData, userType } from "../Data";
+import { UserData, userType } from "../DataAccess";
 import student_darkgray from "../assets/images/icons/student_darkgray.png";
 import teacher_darkgray from "../assets/images/icons/teacher_darkgray.png";
 import Layout from "./_Layout";

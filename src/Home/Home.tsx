@@ -83,11 +83,11 @@ function Footer() {
                         <span>Admin</span>
                         <img src={open_btn_src} alt="Icon"/>
                     </button> */}
-                    <button className={css_button} onClick={()=>navigate("/teacher/")}>
+                    <button className={css_button} onClick={()=>navigate("/teacher/desk")}>
                         <span>Teacher</span>
                         <img src={open_btn_src} alt="Icon"/>
                     </button>
-                    <button className={css_button} onClick={()=>navigate("/student/")}>
+                    <button className={css_button} onClick={()=>navigate("/student/desk")}>
                         <span>Student</span>
                         <img src={open_btn_src} alt="Icon"/>
                     </button>
