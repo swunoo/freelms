@@ -26,7 +26,7 @@ export function ClassMenu ({title, color, styling, units, mode, selectSection, s
             </div>
             <hr className="border-b border-0.5 my-5 mr-5" style={{borderColor: color}}/>
             {(mode==='view' && setMode !== defaultFunc) &&
-                <FullBtn styling={styling.btnEditMeta} onclick={()=>setMode('meta-edit')} label="Edit Meta"/>
+                <FullBtn styling={styling.btnEditMeta} onclick={()=> setMode!('meta-edit')} label="Edit Meta"/>
             }
             {mode==='view'
             ? <ul
@@ -50,7 +50,7 @@ export function ClassMenu ({title, color, styling, units, mode, selectSection, s
                 ))}
             </ul>
             : <div className="flex gap-3 px-3">
-                <FullBtn styling={styling.btnBack} onclick={()=>setMode('view')} label="Cancel and Go Back"/>
+                <FullBtn styling={styling.btnBack} onclick={()=> setMode!('view')} label="Cancel and Go Back"/>
             </div>
             }
         </aside>

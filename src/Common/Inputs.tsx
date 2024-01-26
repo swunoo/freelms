@@ -14,7 +14,7 @@ export default function SearchBar({searchName, handleSearch, dropdowns}: searchB
         <div className="md:flex gap-5 items-center mb-5 justify-end">
             
             {(searchName!==undefined) && 
-                <SearchInput name={searchName} onInput={handleSearch || (e=>{})}/>}
+                <SearchInput name={searchName} onInput={handleSearch || (()=>{})}/>}
 
             {   dropdowns &&
                 dropdowns.map(d => (

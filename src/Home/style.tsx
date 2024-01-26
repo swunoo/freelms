@@ -8,7 +8,6 @@ import admin_white from "../assets/images/icons/admin_white.png";
 import teacher_white from "../assets/images/icons/teacher_white.png";
 import student_white from "../assets/images/icons/student_white.png";
 import staff_white from "../assets/images/icons/staff_white.png";
-import change_lightgray from "../assets/images/icons/change_lightgray.png";
 import admin_lightgray from "../assets/images/icons/admin_lightgray.png";
 import teacher_lightgray from "../assets/images/icons/teacher_lightgray.png";
 import student_lightgray from "../assets/images/icons/student_lightgray.png";

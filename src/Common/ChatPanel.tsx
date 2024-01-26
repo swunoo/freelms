@@ -1,4 +1,3 @@
-import chat_icon from "../assets/images/icons/chat_gray.png";
 import backIcon from "../assets/images/icons/back_material.png"
 import { FullBtn, IconBtn } from "./Buttons";
 

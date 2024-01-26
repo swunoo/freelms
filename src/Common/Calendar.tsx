@@ -104,38 +104,3 @@ export default function Calendar ({styling}: {styling: any}) {
 
   );
 };
-
-function DateInfo({data}: {data: string}){
-    
-    if(data !== 'random') return <></>
-    
-    return(<div className="flex flex-wrap gap-0.5">
-    {Math.random() > 0.5 && <div className="w-1.5 h-1.5" style={{backgroundColor: "#E08DAC"}}></div>}
-    {Math.random() > 0.85 && <div className="rounded-xl w-1.5 h-1.5" style={{backgroundColor: "#153131"}}></div>}
-    {Math.random() > 0.7 && <div className="w-1.5 h-1.5" style={{backgroundColor: "#45CB85"}}></div>}
-    {Math.random() > 0.9 && <div className="rounded-xl w-1.5 h-1.5" style={{backgroundColor: "#6A7FDB"}}></div>}
-    {Math.random() > 0.95 && <div className="rounded-xl w-1.5 h-1.5" style={{backgroundColor: "#45CB85"}}></div>}
-    </div>)
-}
-
-function ClassInfo({data}: {data: string}){
-    
-    if(data !== 'random') return <></>
-    
-    return(<div className="py-8 px-2 bg-gray-50 rounded-b">
-    <div className="px-2 flex gap-3">
-        <div className="flex gap-1 items-center">
-            <span className="w-2 h-2" style={{backgroundColor: "#E08DAC"}}></span>
-            <p className="text-xs font-light text-neutral-600">Biology Class</p>
-        </div>
-        <div className="flex gap-1 items-center">
-            <span className="w-2 h-2" style={{backgroundColor: "#45CB85"}}></span>
-            <p className="text-xs font-light text-neutral-600">Chemistry Class</p>
-        </div>
-        <div className="flex gap-1 items-center">
-            <span className="w-2 h-2 rounded-xl" style={{backgroundColor: "#153131"}}></span>
-            <p className="text-xs font-light text-neutral-600">Class B Exam</p>
-        </div>
-        </div>
-    </div>)
-}
