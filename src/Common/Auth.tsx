@@ -1,5 +1,4 @@
 import { FormEventHandler, ReactNode, useState } from "react";
-import { FullBtn } from "./Buttons";
 
 export function AuthLayout ({Login, Signup, startWithLogin}: {Login: ReactNode, Signup: ReactNode, startWithLogin: boolean}) {
 
