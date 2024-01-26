@@ -79,6 +79,7 @@ function Footer() {
                     Demos with limited features can be accessed via the following links.
                         <br />
                     Full-fledged beta will be released soon.
+                </p>
                 <div className="flex gap-3">
                     {/* <button className={css_button} onClick={()=>navigate("/admin")}>
                         <span>Admin</span>
