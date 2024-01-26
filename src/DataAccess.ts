@@ -2,7 +2,7 @@ import { ClassUnit, classType, sectionType } from "./Common/Classroom/Menu";
 import { sampleClasses } from "./DataSamples";
 import profile_pic from "./assets/images/profile.png";
 
-const MUST_REFRESH = true;
+const MUST_REFRESH = false;
 
 function readLocalStorage(key: string){
     const data = localStorage.getItem(key);

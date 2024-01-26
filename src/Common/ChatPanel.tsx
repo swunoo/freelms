@@ -1,5 +1,5 @@
 import chat_icon from "../assets/images/icons/chat_gray.png";
-import chatIcon from "../assets/images/icons/chat_blue.png"
+import backIcon from "../assets/images/icons/back_material.png"
 import { FullBtn, IconBtn } from "./Buttons";
 
 type chatInter = any; // TODO;
@@ -30,9 +30,9 @@ export function ChatDetails({name, img, data, styling, goBack}: {name: string, i
             className="relative w-full overflow-scroll"
         >
             <div className={"flex gap-3 h-16 items-center px-2 sticky top-0 "+styling.header}>
-                <IconBtn styling={styling.headerIcon} icon={chatIcon} onclick={goBack}/>
+                <IconBtn styling={styling.headerIcon} icon={backIcon} onclick={goBack}/>
                 <div className="flex gap-3 items-center">
-                    <img className="h-12" src={img}/>
+                    <img className="h-12 rounded-full grayscale hover:grayscale-0" src={img}/>
                     <p className={styling.headerText}>{name}</p>
                 </div>
             </div>

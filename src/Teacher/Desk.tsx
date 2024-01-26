@@ -67,7 +67,7 @@ function Content(){
     return (
         <div className={"p-3 md:px-14 m-auto mb-10 h-full " + style['container']}>
             <header className={style['header']}>
-                Welcome back, Anon!
+                Welcome back, Teacher-anon!
             </header>
             <SearchBar
                 searchName="Classes"

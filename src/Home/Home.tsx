@@ -54,7 +54,7 @@ function Hero() {
             </button>
             <div className=" m-auto">
                 <h1 className={style[theme]['hero_title']}>freeLMS</h1>
-                <p className={style[theme]['hero_text'] + " max-w-72 md:max-w-fit"}>powerful, customizable & efficient LMS, for free.</p>
+                <p className={style[theme]['hero_text'] + " max-w-72 md:max-w-fit"}>powerful, customizable & efficient LMS.</p>
             </div>
         </div>
     )

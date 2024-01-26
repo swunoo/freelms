@@ -1,12 +1,11 @@
-import { EventHandler, useContext, useEffect, useState } from "react";
-import scr_admin from "../assets/images/Home.png";
-import scr_teacher from "../assets/images/Home.png";
-import scr_student from "../assets/images/Home.png";
-import scr_staff from "../assets/images/Home.png";
+import { EventHandler, useContext, useState } from "react";
+import scr_admin from "../assets/images/admin_members.png";
+import scr_teacher from "../assets/images/teacher_desk.png";
+import scr_student from "../assets/images/student_class.png";
 import { style } from "./style";
 import { ThemeContext } from "./Home";
 
-type site = "admin"|"teacher"|"student"|"staff";
+type site = "admin"|"teacher"|"student";
 
 function Content() {
 
@@ -15,8 +14,7 @@ function Content() {
     const screenImages = {
         'admin': scr_admin,
         'teacher': scr_teacher,
-        'student': scr_student,
-        'staff': scr_staff
+        'student': scr_student
     };
 
     const [selected, setSelected] = useState<site>('admin');
@@ -47,9 +45,9 @@ function Content() {
                 <Details
                     title="teacher"
                     text={[
-                        "Customize design for the LMS",
-                        "Manage teachers, students and staff",
-                        "View statistics in real-time"
+                        "Create and edit lecture content and quizzes",
+                        "Use feature-rich editors with multimedia support",
+                        "Monitor and manage student progress"
                     ]}
                     open = {selected === 'teacher'}
                     changeSite={() => setSelected('teacher')}
@@ -57,14 +55,14 @@ function Content() {
                 <Details
                     title="student"
                     text={[
-                        "Customize design for the LMS",
-                        "Manage teachers, students and staff",
-                        "View statistics in real-time"
+                        "Join multiple classes",
+                        "Take part in lectures and quizzes",
+                        "Learn in a self-paced manner"
                     ]}
                     open = {selected === 'student'}
                     changeSite={() => setSelected('student')}
                 />
-                <Details
+                {/* <Details
                     title="staff"
                     text={[
                         "Customize design for the LMS",
@@ -73,7 +71,7 @@ function Content() {
                     ]}
                     open = {selected === 'staff'}
                     changeSite={() => setSelected('staff')}
-                />
+                /> */}
             </ul>
         </div>
     )

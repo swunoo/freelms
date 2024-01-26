@@ -1,3 +1,3 @@
 # freelms
 
-TODO: Styling.
+TODO: Styling (content display, calendar, chatImages), Testing.

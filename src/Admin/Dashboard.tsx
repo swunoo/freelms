@@ -20,17 +20,17 @@ function Content() {
     const dataBar = {
         type: 'bar',
         data: {
-          labels: ['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday '],
+          labels: ['Maths', 'ComputerScience' , 'Business' , 'Politics' , 'Architecture' , 'Music' , 'Economics '],
           datasets: [
             {
               label: 'Old',
-              data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
-              backgroundColor: ['#1ce23f']
+              data: [29, 100, 258, 159, 236, 235, 152],
+              backgroundColor: ['#284B63']
             },
             {
               label: 'New',
-              data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
-              backgroundColor: ['#e21c3f']
+              data: [23, 30, 10, 18, 15, 21, 28],
+              backgroundColor: ['#E9B44C']
             },
           ],
         },

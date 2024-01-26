@@ -1,6 +1,7 @@
 import { ReactNode, useState } from "react";
 import Sidebar from "../Common/Sidebar";
 import Navbar from "./_Navbar";
+import { sideBarStyle } from "./style";
 
 export default function Layout({ children, active }: { children: ReactNode, active: string }) {
 
@@ -15,7 +16,7 @@ export default function Layout({ children, active }: { children: ReactNode, acti
                         {children}
                     </div>
 
-                    <Sidebar sideBarContent={sideBarContent}/>
+                    <Sidebar styling={sideBarStyle['container']} sideBarContent={sideBarContent}/>
                 </div>
 
             </div>

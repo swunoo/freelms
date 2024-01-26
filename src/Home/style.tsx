@@ -41,8 +41,8 @@ export const style = {
         footer_wrapper: "bg-slate-600",
         footer_content: "text-white",
         footer_title: "text-3xl uppercase",
-        footer_text: "font-light",
-        demo_btn: "rounded bg-slate-300 text-black hover:bg-slate-200",
+        footer_text: "font-light md:text-lg",
+        demo_btn: "md:text-lg rounded bg-slate-300 text-black hover:bg-slate-200",
         footer_copyright: "bg-neutral-700 text-slate-100 text-sm"
     },
     simple_dark: {
@@ -61,8 +61,8 @@ export const style = {
         footer_wrapper: "bg-gradient-to-r from-slate-800 to-slate-700",
         footer_content: "text-white",
         footer_title: "text-3xl uppercase",
-        footer_text: "font-thin",
-        demo_btn: "rounded bg-slate-900 text-white font-light hover:bg-slate-800",
+        footer_text: "font-thin md:text-lg",
+        demo_btn: "md:text-lg rounded bg-slate-900 text-white font-light hover:bg-slate-800",
         footer_copyright: "bg-slate-600 text-slate-300 text-sm"
     },
     gradient_light: {
@@ -81,8 +81,8 @@ export const style = {
         footer_wrapper: "bg-teal-200",
         footer_content: "text-white",
         footer_title: "text-black text-3xl ",
-        footer_text: "font-light text-neutral-800",
-        demo_btn: "shadow-lg rounded-xl bg-yellow-300 text-black hover:bg-yellow-200 ",
+        footer_text: "font-light text-neutral-800 md:text-lg",
+        demo_btn: "md:text-lg shadow-lg rounded-xl bg-yellow-300 text-black hover:bg-yellow-200 ",
         footer_copyright: "bg-yellow-100 text-neutral-600 text-sm"
     },
     gradient_dark: {
@@ -101,8 +101,8 @@ export const style = {
         footer_wrapper: "bg-neutral-900",
         footer_content: "text-white",
         footer_title: "text-3xl uppercase",
-        footer_text: "font-light",
-        demo_btn: " rounded bg-teal-600 text-black shadow-lg font-medium hover:bg-teal-500",
+        footer_text: "font-light md:text-lg",
+        demo_btn: "md:text-lg  rounded bg-teal-600 text-black shadow-lg font-medium hover:bg-teal-500",
         footer_copyright: "bg-neutral-800 text-neutral-500 text-sm"
     },
     neubrutalist: {
@@ -121,8 +121,8 @@ export const style = {
         footer_wrapper: "bg-blue-900",
         footer_content: "text-white",
         footer_title: "text-5xl font-medium",
-        footer_text: "font-light",
-        demo_btn: "bg-yellow-300 text-black border-2 border-black font-medium hover:bg-orange-300",
+        footer_text: "font-light md:text-lg",
+        demo_btn: "md:text-lg bg-yellow-300 text-black border-2 border-black font-medium hover:bg-orange-300",
         footer_copyright: "bg-neutral-700 text-neutral-200 text-sm"
     }
 
