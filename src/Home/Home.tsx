@@ -75,7 +75,7 @@ function Footer() {
                 <h3 className={style[theme]['footer_title']}>Demo</h3>
                 <p className={style[theme]['footer_text'] + " my-9 w-fit"}>Take a quick look at freeLMS via the following links.
                 <br />
-                Please be aware that it is a demo and no data will be saved.
+                Please be aware that it is a demo and data is saved on your localstorage.
                 <br />
                 A real-world usable freeLMS will be released soon.</p>
                 <div className="flex gap-3">
