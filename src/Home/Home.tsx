@@ -73,11 +73,12 @@ function Footer() {
         <div className={style[theme]['footer_wrapper'] + " md:mt-64 md:py-20 md:px-24 mt-32 py-14 px-5"}>
             <div className={style[theme]['footer_content'] + " max-w-3xl m-auto w-fit"}>
                 <h3 className={style[theme]['footer_title']}>Demo</h3>
-                <p className={style[theme]['footer_text'] + " my-9 w-fit"}>Take a quick look at freeLMS via the following links.
-                <br />
-                Please be aware that it is a demo and data is saved on your localstorage.
-                <br />
-                A real-world usable freeLMS will be released soon.</p>
+                <p className={style[theme]['footer_text'] + " my-9 w-fit"}>
+                    This is a prototype developed with the aim of learning new technologies.
+                        <br />
+                    Demos with limited features can be accessed via the following links.
+                        <br />
+                    Full-fledged beta will be released soon.
                 <div className="flex gap-3">
                     {/* <button className={css_button} onClick={()=>navigate("/admin")}>
                         <span>Admin</span>
