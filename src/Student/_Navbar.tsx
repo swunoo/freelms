@@ -8,6 +8,7 @@ import calendarIcon from "../assets/images/icons/calendar_material.png";
 import chatIcon from "../assets/images/icons/chat_material.png";
 import notiIcon from "../assets/images/icons/noti_material.png";
 import { navStyle, sideBarStyle } from "./style";
+import { useNavigate } from "react-router-dom";
 
 export default Navbar;
 
@@ -15,6 +16,7 @@ export default Navbar;
 function Navbar({active, setSideBarContent}: {active: string, setSideBarContent: (r: ReactNode)=>void}){
 
 
+    const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('');
 
     const brand = "freelms"
@@ -67,7 +69,7 @@ function Navbar({active, setSideBarContent}: {active: string, setSideBarContent:
         <div
             className={"flex justify-between items-center py-2 px-5 md:px-16 sticky top-0 w-full z-20 " + navStyle['nav_container']}
         >
-            <p>{brand}</p>
+            <p className="cursor-pointer" onClick={()=>navigate("/")}>{brand}</p>
             <div className="flex md:gap-7 gap-3 items-center relative">
                 <a href="/student/desk" className={(active==='desk'?navStyle['active_link']:'')+navStyle['nav_link']}>Desk</a>
 
