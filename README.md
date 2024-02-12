@@ -8,5 +8,5 @@
 - ReactJS with TypeScript, TailwindCSS.
 
 ## Functionalities
-[Completed]          Home Customization, Text Editing, Lessons and Quizzes.
-[Under Development]  Calendar, Chat, Notifications.
+* Completed          Home Customization, Text Editing, Lessons and Quizzes.
+* Under Development  Calendar, Chat, Notifications.
