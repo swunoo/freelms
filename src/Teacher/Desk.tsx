@@ -15,7 +15,7 @@ export function Desk(){
     )
 }
 
-type classData = any; // TODO;
+type classData = any;
 function Content(){
 
     const classObj = new ClassData();
