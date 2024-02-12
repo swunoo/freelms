@@ -4,7 +4,7 @@
 * Prototype with basic functionalities to be used for Online Classes / MOOCs.
 * Lessons with multi-media support and quizzes can be customized by the teacher and accessed by students.
 
-<img src="[image.png](https://github.com/swunoo/freelms/assets/103637975/7564472c-483a-41aa-959b-8e69aec0a185)" width="200" height="100">
+[![image]()](https://www.simpleimageresizer.com/_uploads/photos/8fa9b52a/Screenshot_from_2024-02-12_23-02-05_80.png)
 
 ## Technology
 * ReactJS with TypeScript, TailwindCSS.
